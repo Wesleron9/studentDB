@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 14 2021 г., 18:34
+-- Время создания: Окт 14 2021 г., 19:38
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -29,20 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
-  `surname` varchar(18) NOT NULL,
-  `name` varchar(18) NOT NULL,
-  `patronymic` varchar(18) NOT NULL,
+  `name` varchar(50) NOT NULL,
   `login` varchar(100) NOT NULL,
   `pass` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `users`
---
-
-INSERT INTO `users` (`id`, `surname`, `name`, `patronymic`, `login`, `pass`) VALUES
-(1, 'Сидоренко', 'Роман', 'Игоревич', '', ''),
-(2, 'Сидоренко', 'Роман', 'Игоревич', '', '');
 
 --
 -- Индексы сохранённых таблиц
