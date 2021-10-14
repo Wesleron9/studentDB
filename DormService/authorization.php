@@ -1,11 +1,11 @@
 <?php
     $login = filter_var(trim($_POST['login']),
     FILTER_SANITIZE_STRING);
-    $passwd = filter_var(trim($_POST['pass']),
+    $passwd = filter_var(trim($_POST['password']),
     FILTER_SANITIZE_STRING);
-    $name = filter_var(trim($_POST['name']),
-    FILTER_SANITIZE_STRING);
-
+ //   $name = filter_var(trim($_POST['name']),
+ //   FILTER_SANITIZE_STRING);
+    $name = "test"
     if(mb_strlen($login) <5 || mb_strlen($login) > 90) {
         echo "Недопустимая длина логина (От 5 до 90 символов)"
         exit();
