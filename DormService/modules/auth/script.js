@@ -8,7 +8,7 @@ document.querySelector('#signin').addEventListener('click', () => {
 
   const xhr = new XMLHttpRequest()
   xhr.open('POST', '../../test.php', false)
-  xhr.send(login,password)
+  xhr.send({login: '1234',password: '5432'})
   
   if (xhr.status != 200) {
     alert(xhr.status + ': ' + xhr.statusText ); 
