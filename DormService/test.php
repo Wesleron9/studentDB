@@ -1,4 +1,3 @@
 <?php
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+echo $_POST['login'];
+echo $_POST['password'];
