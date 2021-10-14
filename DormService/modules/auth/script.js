@@ -1,6 +1,6 @@
 document.querySelector('#signin').addEventListener('click', () => {
-  let login = documen.querySelector('#login').value
-  let password = documen.querySelector('#pass').value
+  let login = document.querySelector('#login').value
+  let password = document.querySelector('#pass').value
 
   if (!login || !password) {
     return
