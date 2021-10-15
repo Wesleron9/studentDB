@@ -8,7 +8,7 @@ document.querySelector('#signin').addEventListener('click', () => {
 
   let body = JSON.stringify({login:login, password:password})
   const xhr = new XMLHttpRequest()
-  xhr.open('POST', '../../test.php', false)
+  xhr.open('POST', '../../authorization.php', false)
   xhr.send(body)
   
   if (xhr.status != 200) {
