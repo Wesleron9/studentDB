@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DormService</title>
+  <link rel="stylesheet" href="main-style.css">
+  <script src="main-script.js" defer></script>
+</head>
+
+<body>
+  <!-- Main menu (side menu) -->
+   <?php
+    if ($_COOKIE['user'] == '' ):
+    ?>
+  <div class="side-menu">
+    <img class="logo" src="image/LOGO.png" alt="LOGO">
+    <div class="user-block">
+      <div style="background-image: url('image/avatar2.jpg')" class="user-photo"></div>
+      <div class="user-info">
+        <div class="user-name">Ковалев Вадим А.</div>
+        <div class="user-role">Администратор</div>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <div class="main">
+    <!-- Modules will be inserted here -->
+  </div>
+  <?php else:?>
+            <p>Привет <?=$_COOKIE['user']?>. чтобы выйти нажмите <a href="/exit.php">здесь</a>.</p>
+        <?php endif;?>
+</body>
+
+</html>
