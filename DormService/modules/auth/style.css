@@ -105,6 +105,7 @@ body {
 }
 
 .button {
+  border: none;
   user-select: none;
   border-radius: 3px;
   display: flex;
@@ -115,6 +116,10 @@ body {
   width: 162px;
   height: 50px;
   background-color: #4C5B98;
+}
+
+a.button {
+  text-decoration: none;
 }
 
 .reg-container {

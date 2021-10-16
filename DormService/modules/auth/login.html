@@ -12,15 +12,15 @@
 
 <body>
   <div class="login-container">
-    <div class="login">
+    <form method="post" action="../../authorization.php" class="login">
       <img src="../../image/icons/user 1.png" alt="user 1.png">
       <input id="login" type="text" name="login" placeholder="Логин">
-      <input id="pass" type="password" name="pass" placeholder="Пароль">
+      <input id="pass" type="password" name="password" placeholder="Пароль">
       <div class="buttons">
-        <div id="signin" class="button">Войти</div>
-        <div id="reg" class="button">Регистрация</div>
+        <button id="signin" class="button">Войти</button>
+        <a href="#" id="reg" class="button">Регистрация</a>
       </div>
-    </div>
+    </form>
   </div>
   <div class="reg-container"></div>
 </body>
