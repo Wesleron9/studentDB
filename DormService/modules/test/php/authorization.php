@@ -1,7 +1,7 @@
 <?php
 $login = filter_var(trim($_POST['login']),
     FILTER_SANITIZE_STRING);
-$passwd = filter_var(trim($_POST['password']),
+$passwd = filter_var(trim($_POST['pass']),
     FILTER_SANITIZE_STRING);
 
 $passwd = md5($passwd."matveeva");
