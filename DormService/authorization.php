@@ -18,5 +18,5 @@ if(count($user) ==0){
 setcookie('user', $user['name'], time() + 3600 * 24, "/");
 
 $mysql->close();
-header('location: /');
+header('location: /modules/auth/login.php');
 ?>
