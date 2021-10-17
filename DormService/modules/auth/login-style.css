@@ -1,0 +1,209 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #262b35;
+  overflow: hidden;
+  margin: 0;
+  padding-top: -76px; /* Компенсация сдвига из-за top-bar*/
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.screen {
+  width: 100vw;
+  height: 100vh;
+  transition: margin-top 0.7s;
+  padding-bottom: 20vh;
+}
+
+.screen.up {
+  margin-top: -100vh; /*Класс, чтобы сменять экраны*/
+}
+
+/* ========================================== */
+/*====================Вход====================*/
+/* ========================================== */
+
+.login-screen {
+  display: flex;
+  /* background: rgba(0, 255, 13, 0.1); */
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  align-items: center;
+}
+
+.login img {
+  user-select: none;
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+input {
+  width: 340px;
+  height: 45px;
+  border-radius: 3px;
+  outline: none;
+  background-color: #353e50;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #eaeaea;
+  padding: 0px 5px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+input:focus {
+  border-bottom: 2px solid #fff;
+  transition: 0.3s ease;
+}
+
+input::-webkit-input-placeholder {
+  color: #8d939c;
+  font-size: 1.5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input::-moz-placeholder {
+  color: #8d939c;
+  font-size: 1.5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input:-moz-placeholder {
+  color: #8d939c;
+  font-size: 1.5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input:-ms-input-placeholder {
+  color: #8d939c;
+  font-size: 1.5rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input:focus::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input:focus:-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input:focus:-ms-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.button {
+  user-select: none;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  width: 162px;
+  height: 50px;
+  background-color: #4c5b98;
+  transition: background-color 0.1s;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #5e6ca5;
+}
+
+.button:active {
+  background-color: #eaeaea;
+  color: #4c5b98;
+}
+
+/* =========================================== */
+/*=================Регистрация=================*/
+/* =========================================== */
+.reg-screen {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100vw;
+}
+
+.top-bar {
+  position: sticky;
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  flex-grow: 0;
+  padding: 10px;
+}
+
+.button-back {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  color: #eaeaea;
+  fill: #eaeaea;
+  opacity: 1;
+  transition: opacity 0.7s;
+}
+
+.button-back.hidden {
+  opacity: 0;
+}
+
+.button-back:hover {
+  color: #4c5b98;
+  fill: #4c5b98;
+}
+
+.button-back svg {
+  padding-top: 3px;
+  width: 30px;
+}
+
+.col {
+  width: 45vw;
+}
+
+.col1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
