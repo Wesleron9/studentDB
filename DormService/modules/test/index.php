@@ -34,7 +34,7 @@
             </form>
         </div>
         <?php else:?>
-            <p>Привет <?=$_COOKIE['user']?>. чтобы выйти нажмите <a href="/exit.php">здесь</a>.</p>
+            <p>Привет <?=$_COOKIE['user']?>. чтобы выйти нажмите <a href="/modules/test/exit.php">здесь</a>.</p>
         <?php endif;?>
 
     </div>
