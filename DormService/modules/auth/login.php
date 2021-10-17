@@ -15,8 +15,8 @@
     if ($_COOKIE['user'] == '' ):
     ?>
   <div class="login-container">
-    <form method="post" action="../../authorization.php" class="login">
-      <img src="../../image/icons/user 1.png" alt="user 1.png">
+    <form method="post" action="/modules/auth/validation-form/authorization.php" class="login">
+      <img src="../../resources/image/icons/user 1.png" alt="user 1.png">
       <input id="login" type="text" name="login" placeholder="Логин">
       <input id="pass" type="password" name="password" placeholder="Пароль">
       <div class="buttons">
