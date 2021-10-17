@@ -19,7 +19,7 @@
 
     $passwd = md5($passwd."matveeva");
 
-    $mysql = new mysqli('127.0.0.1', 'root', 'rs2076571', 'dorm_db');
+include "connection-to-db.php";
     $mysql->query("INSERT INTO `users` (`login`, `pass`, `name`)
     VALUES ('$login', '$passwd', '$name')");
    $mysql->close();

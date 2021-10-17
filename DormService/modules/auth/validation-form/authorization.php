@@ -6,7 +6,7 @@ $passwd = filter_var(trim($_POST['password']),
 
 $passwd = md5($passwd."matveeva");
 
-$mysql = new mysqli('127.0.0.1', 'root', 'rs2076571', 'dorm_db');
+include "connection-to-db.php";
 
 $result = $mysql->query("SELECT `login`, `pass`, `name` FROM `users` WHERE  `login` = '$login' and `pass` = '$passwd'");
 $user =$result->fetch_assoc();
