@@ -20,7 +20,7 @@ document.querySelector("#log-btn").addEventListener("click", () => {
   }
 
   // Отправка логина и пароля на сервер
-  SendRequest("POST", "../../test-log.php", { login: login, password: password })
+  SendRequest("POST", "validation-form/authorization.php", { login: login, password: password })
 })
 
 // Обработка нажатия на кнопку "Регистрация" (Переход к форме регистрации)
@@ -47,5 +47,5 @@ document.querySelector("#send-reg-form-btn").addEventListener("click", () => {
     return
   }
 
-  SendRequest("POST", "../../test-reg.php", { login: login, password: password })
+  SendRequest("POST", "validation-form/registration.php", { login: login, password: password, name: name })
 })

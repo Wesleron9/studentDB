@@ -1,7 +1,9 @@
 <?php
-$login = filter_var(trim($_POST['login']),
+header("Content-Type: application/json");
+$data = json_decode(file_get_contents("php://input"));
+$login = filter_var(trim($data->login),
     FILTER_SANITIZE_STRING);
-$passwd = filter_var(trim($_POST['password']),
+$passwd = filter_var(trim($data->password),
     FILTER_SANITIZE_STRING);
 
 $passwd = md5($passwd."matveeva");
@@ -18,5 +20,5 @@ if(count($user) ==0){
 setcookie('user', $user['name'], time() + 3600 * 24, "/");
 
 $mysql->close();
-header('location: /');
+echo "Вы автаризованы"
 ?>

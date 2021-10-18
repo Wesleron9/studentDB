@@ -1,9 +1,11 @@
 <?php
-    $login = filter_var(trim($_POST['login']),
+header("Content-Type: application/json");
+$data = json_decode(file_get_contents("php://input"));
+    $login = filter_var(trim($data->login),
     FILTER_SANITIZE_STRING);
-    $passwd = filter_var(trim($_POST['pass']),
+    $passwd = filter_var(trim($data->password),
     FILTER_SANITIZE_STRING);
-   $name = filter_var(trim($_POST['name']),
+   $name = filter_var(trim($data->name),
    FILTER_SANITIZE_STRING);
 //    $name = "test";
     if(mb_strlen($login) <5 || mb_strlen($login) > 90) {
@@ -19,12 +21,11 @@
 
     $passwd = md5($passwd."matveeva");
 
-include "connection-to-db.php";
+require "connection-db.php";
     $mysql->query("INSERT INTO `users` (`login`, `pass`, `name`)
     VALUES ('$login', '$passwd', '$name')");
    $mysql->close();
-   header('location: /');
 //echo $_POST['login'];
 //$login = $_POST['login'];
-//echo $login;
+echo "Вы успешно зарегистрировались";
 ?> 
