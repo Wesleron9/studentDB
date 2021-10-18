@@ -8,7 +8,7 @@ $passwd = filter_var(trim($data->password),
 
 $passwd = md5($passwd."matveeva");
 
-require "connection-db.php";
+require "../../../connection-to-db.php";
 
 $result = $mysql->query("SELECT `login`, `pass`, `name` FROM `users` WHERE  `login` = '$login' and `pass` = '$passwd'");
 $user =$result->fetch_assoc();

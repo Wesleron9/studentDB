@@ -21,7 +21,7 @@ $data = json_decode(file_get_contents("php://input"));
 
     $passwd = md5($passwd."matveeva");
 
-require "connection-db.php";
+require "../../../connection-to-db.php";
     $mysql->query("INSERT INTO `users` (`login`, `pass`, `name`)
     VALUES ('$login', '$passwd', '$name')");
    $mysql->close();
