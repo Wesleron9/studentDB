@@ -12,11 +12,8 @@
 
 <body>
   <!-- Main menu (side menu) -->
-   <?php
-    if ($_COOKIE['user'] == '' ):
-    ?>
   <div class="side-menu">
-    <img class="logo" src="resources/image/LOGO.png" alt="LOGO">
+    <img class="logo" src="image/LOGO2.svg" alt="LOGO">
     <div class="user-block">
       <div style="background-image: url('resources/image/avatar2.jpg')" class="user-photo"></div>
       <div class="user-info">
@@ -29,9 +26,6 @@
   <div class="main">
     <!-- Modules will be inserted here -->
   </div>
-  <?php else:?>
-            <p>Привет <?=$_COOKIE['user']?>. чтобы выйти нажмите <a href="/modules/test/exit.php">здесь</a>.</p>
-        <?php endif;?>
 </body>
 
 </html>

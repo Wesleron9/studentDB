@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Content-Type: application/json");
 $data = json_decode(file_get_contents("php://input"));
 $login = filter_var(trim($data->login),
@@ -17,8 +18,9 @@ if(count($user) ==0){
     exit();
 }
 
-setcookie('user', $user['name'], time() + 3600 * 24, "/");
+$_SESSION['user_name'] = $login;
 
 $mysql->close();
+
 echo "Вы автаризованы"
 ?>
