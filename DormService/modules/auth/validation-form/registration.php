@@ -8,8 +8,8 @@ $data = json_decode(file_get_contents("php://input"));
    $name = filter_var(trim($data->name),
    FILTER_SANITIZE_STRING);
 //    $name = "test";
-    if(mb_strlen($login) <5 || mb_strlen($login) > 90) {
-       echo "Недопустимая длина логина (От 5 до 90 символов)";
+    if(mb_strlen($login) <4 || mb_strlen($login) > 90) {
+       echo "Недопустимая длина логина (От 4 до 90 символов)";
        exit();
     }  else if (mb_strlen($passwd) <8 || mb_strlen($login) > 32) {
         echo "Недопустимая длина пароля (от 8 до 32 символов)";
