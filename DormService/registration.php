@@ -7,8 +7,8 @@ $data = json_decode(file_get_contents("php://input"));
     FILTER_SANITIZE_STRING);
    $name = filter_var(trim($data->name),
    FILTER_SANITIZE_STRING);
-//    $name = "test";
-    if(mb_strlen($login) <4 || mb_strlen($login) > 90) {
+
+   if(mb_strlen($login) <4 || mb_strlen($login) > 90) {
        echo "Недопустимая длина логина (От 4 до 90 символов)";
        exit();
     }  else if (mb_strlen($passwd) <8 || mb_strlen($login) > 32) {
@@ -21,7 +21,7 @@ $data = json_decode(file_get_contents("php://input"));
 
     $passwd = md5($passwd."matveeva");
 
-require "../../../connection-to-db.php";
+require "connection-to-db.php";
     $mysql->query("INSERT INTO `users` (`login`, `pass`, `name`)
     VALUES ('$login', '$passwd', '$name')");
    $mysql->close();

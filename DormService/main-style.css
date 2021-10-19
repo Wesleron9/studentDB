@@ -4,6 +4,10 @@ body {
  margin: 0;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .side-menu {
   color: #EAEAEA;
   width: 250px;
@@ -59,4 +63,25 @@ body {
 
 .user-role {
   font-size: 0.8rem;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.menu-item img {
+  width: 20px;
+}
+
+.menu-item span {
+  font-size: 1.5rem;
+  margin-left: 10px;
 }
