@@ -11,16 +11,18 @@ $passwd = md5($passwd."matveeva");
 
 require "../../../connection-to-db.php";
 
-$result = $mysql->query("SELECT `login`, `pass`, `name` FROM `users` WHERE  `login` = '$login' and `pass` = '$passwd'");
+$result = $mysql->query("SELECT `login`, `pass`, `name`, `role`, `way to photo` FROM `users` WHERE  `login` = '$login' and `pass` = '$passwd'");
 $user =$result->fetch_assoc();
 if(count($user) ==0){
     echo "Неверный логин или пароль";
     exit();
 }
 
-$_SESSION['user_name'] = $login;
-
+$_SESSION['user name'] = $login;
+$role_result = $mysql->query("SELECT `role`, `role id` FROM `role` WHERE  `role id` = $user[role]");
+    $role =$role_result->fetch_assoc();
 $mysql->close();
 
-echo "Вы автаризованы"
+$user = [name=> $user[name], role=> $role[role], photo=> $user['way to photo']];
+$json = json_encode($user, JSON_UNESCAPED_UNICODE);
 ?>
