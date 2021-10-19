@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 19 2021 г., 07:08
+-- Время создания: Окт 19 2021 г., 08:45
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -22,6 +22,24 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `dorm_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `dorm_db`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `role`
+--
+
+CREATE TABLE `role` (
+  `role id` int(3) NOT NULL,
+  `role` varchar(30) CHARACTER SET utf8mb4 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `role`
+--
+
+INSERT INTO `role` (`role id`, `role`) VALUES
+(1, 'Администратор');
 
 -- --------------------------------------------------------
 
@@ -542,18 +560,16 @@ CREATE TABLE `users` (
   `pass` varchar(32) NOT NULL,
   `role` int(3) DEFAULT NULL,
   `Confirmed` tinyint(1) DEFAULT NULL,
-  `Email` int(11) DEFAULT NULL
+  `Email` varchar(50) DEFAULT NULL,
+  `way to photo` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`) VALUES
-(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', NULL, NULL, NULL),
-(11, 'roman.sidorenko2000@', 'sidorencko-roman2014', 'fa730e0db0b520e8f9e07fc6e103f91c', NULL, NULL, NULL),
-(12, 'system-admin', 'sidorenri', '9d92192c70cffc0f2532f27d427f5959', NULL, NULL, NULL),
-(13, 'system-admin', 'root', '8d72cdccfd820fb82962ed7c5be31875', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`) VALUES
+(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, NULL, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg');
 
 --
 -- Индексы сохранённых таблиц
