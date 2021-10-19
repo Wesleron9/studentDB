@@ -6,7 +6,7 @@ document.querySelector("#log-btn").addEventListener("click", () => {
   if (!login || !password) {
     return
   }
-
+  
   // Отправка логина и пароля на сервер
   SendRequest("POST", "validation-form/authorization.php", { login: login, password: password })
 })

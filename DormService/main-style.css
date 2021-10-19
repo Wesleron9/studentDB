@@ -34,13 +34,18 @@ body {
 }
 
 .user-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 45px;
   height: 45px;
   border-radius: 100%;
   background-color: #707683;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
+  overflow: hidden;
+}
+
+.user-photo img {
+  width: 45px;
 }
 
 .user-info {
