@@ -1,4 +1,7 @@
- // Обработка нажатия на кнопку "Войти"
+//----------------------------------------------------
+//-----------------Регистрация и вход-----------------
+//----------------------------------------------------
+// Обработка нажатия на кнопку "Войти"
 document.querySelector("#log-btn").addEventListener("click", () => {
   let login = document.querySelector("#log-login").value
   let password = document.querySelector("#log-pass").value
@@ -8,9 +11,12 @@ document.querySelector("#log-btn").addEventListener("click", () => {
   }
 
   // Отправка логина и пароля на сервер
-  SendRequest("POST", "validation-form/authorization.php", {
+  SendRequest("POST", "authorization.php", {
     login: login,
     password: password,
+  },
+  ()=>{
+    
   })
 })
 
@@ -38,7 +44,7 @@ document.querySelector("#send-reg-form-btn").addEventListener("click", () => {
     return
   }
 
-  SendRequest("POST", "validation-form/registration.php", {
+  SendRequest("POST", "registration.php", {
     name: name,
     login: login,
     password: password,
