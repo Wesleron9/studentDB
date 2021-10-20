@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 19 2021 г., 08:45
+-- Время создания: Окт 20 2021 г., 19:32
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -561,15 +561,17 @@ CREATE TABLE `users` (
   `role` int(3) DEFAULT NULL,
   `Confirmed` tinyint(1) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
-  `way to photo` varchar(250) DEFAULT NULL
+  `way to photo` varchar(250) DEFAULT NULL,
+  `access level` int(3) NOT NULL DEFAULT '0',
+  `key` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`) VALUES
-(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, NULL, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg');
+INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`, `access level`, `key`) VALUES
+(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, NULL, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg', 999, NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -601,7 +603,7 @@ ALTER TABLE `stud`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
