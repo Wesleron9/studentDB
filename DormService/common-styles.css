@@ -1,14 +1,17 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #262b35;
+  color: #eaeaea;
   margin: 0;
+  padding: 20px;
 }
 
 * {
   box-sizing: border-box;
 }
 
-input[type="text"], input[type="password"]  {
+input[type="text"],
+input[type="password"] {
   width: 340px;
   height: 45px;
   border-radius: 3px;
@@ -22,55 +25,64 @@ input[type="text"], input[type="password"]  {
   margin-bottom: 20px;
 }
 
-input:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   border-bottom: 2px solid #fff;
   transition: 0.3s ease;
 }
 
-input::-webkit-input-placeholder {
+input[type="text"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
 }
 
-input::-moz-placeholder {
+input[type="text"]::-moz-placeholder,
+input[type="password"]::-moz-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
 }
 
-input:-moz-placeholder {
+input[type="text"]:-moz-placeholder,
+input[type="text"]:-moz-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
 }
 
-input:-ms-input-placeholder {
+input[type="text"]:-ms-input-placeholder,
+input[type="password"]:-ms-input-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
 }
 
-input:focus::-webkit-input-placeholder {
+input[type="text"]:focus::-webkit-input-placeholder,
+input[type="password"]:focus::-webkit-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-input:focus::-moz-placeholder {
+input[type="text"]:focus::-moz-placeholder,
+input[type="password"]:focus::-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-input:focus:-moz-placeholder {
+input[type="text"]:focus:-moz-placeholder,
+input[type="password"]:focus:-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-input:focus:-ms-input-placeholder {
+input[type="text"]:focus:-ms-input-placeholder,
+input[type="password"]:focus:-ms-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -87,6 +99,7 @@ input:focus:-ms-input-placeholder {
   height: 50px;
   background-color: #4c5b98;
   transition: background-color 0.1s;
+  border: none;
 }
 
 .button:hover {

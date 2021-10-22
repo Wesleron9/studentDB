@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Module-creator</title>
-</head>
-<body>
-  <form action="" method="post">
-    <button class="button"></button>
-  </form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module-creator</title>
+    <link rel="stylesheet" href="/common-styles.css" />
+    <link rel="stylesheet" href="mc-style.css" />
+  </head>
+  <body>
+    <h1>Регистрация модуля:</h1>
+    <form action="" method="POST">
+      <h3>Имя модуля (пр. work_with_stud):</h3>
+      <input type="text" />
+      <h3>Текст модуля (название модуля, которое будет выводиться):</h3>
+      <input type="text" />
+      <h3>Уровень доступа:</h3>
+      <select name="">
+        <option value="">роль 1</option>
+        <option value="">роль 2</option>
+        <option value="">роль 3</option>
+        <option value="">роль 4</option>
+      </select>
+      <h3>что это?</h3>
+      <div>
+        <input type="radio" name="type" id="p1" /><label for="p1"
+          >Основной(модуль, который будет отображен, как пункт меню
+          слева)</label
+        >
+      </div>
+      <div>
+        <input type="radio" name="type" id="p2" /><label for="p2">Вложенный</label>
+      </div>
+      <div>
+        <input type="radio" name="type" id="p3" /><label for="p3"
+          >Просто пункт меню</label
+        >
+      </div>
+      <input type="submit" class="button" value="Зарегистрировать" />
+    </form>
+  </body>
 </html>
