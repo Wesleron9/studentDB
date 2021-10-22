@@ -8,36 +8,63 @@
     <link rel="stylesheet" href="/common-styles.css" />
     <link rel="stylesheet" href="mc-style.css" />
   </head>
+
   <body>
     <h1>Регистрация модуля:</h1>
     <form action="" method="POST">
+      <h3>Что это?</h3>
+      <div>
+        <input type="radio" name="type" id="p1" value="fundamental" /><label
+          for="p1"
+          >Основной модуль (будет отображен, как пункт меню слева)</label
+        >
+      </div>
+      <div>
+        <input type="radio" name="type" id="p2" value="embedded" /><label
+          for="p2"
+          >Вложенный</label
+        >
+      </div>
+      <div>
+        <input
+          type="radio"
+          checked
+          name="type"
+          id="p3"
+          value="menuItem"
+        /><label for="p3">Просто пункт меню</label>
+      </div>
+      <div class="whereIsModule hidden">
+        <h3>Куда вложен модуль:</h3>
+        <select name="whereIsModule">
+          <option value="">Студенты</option>
+          <option value="">Бухгалтерия</option>
+        </select>
+      </div>
+
       <h3>Имя модуля (пр. work_with_stud):</h3>
-      <input type="text" />
+      <input type="text" name="moduleName" />
       <h3>Текст модуля (название модуля, которое будет выводиться):</h3>
-      <input type="text" />
+      <input type="text" name="moduleText" />
       <h3>Уровень доступа:</h3>
-      <select name="">
+      <select name="role">
         <option value="">роль 1</option>
         <option value="">роль 2</option>
         <option value="">роль 3</option>
         <option value="">роль 4</option>
       </select>
-      <h3>что это?</h3>
-      <div>
-        <input type="radio" name="type" id="p1" /><label for="p1"
-          >Основной(модуль, который будет отображен, как пункт меню
-          слева)</label
-        >
-      </div>
-      <div>
-        <input type="radio" name="type" id="p2" /><label for="p2">Вложенный</label>
-      </div>
-      <div>
-        <input type="radio" name="type" id="p3" /><label for="p3"
-          >Просто пункт меню</label
-        >
-      </div>
       <input type="submit" class="button" value="Зарегистрировать" />
     </form>
+    <script>
+      document.querySelectorAll('input[name="type"]').forEach((input) => {
+        input.addEventListener("click", function () {
+          if (this.value === "embedded") {
+            document.querySelector(".whereIsModule").classList.remove("hidden")
+          } else {
+            document.querySelector(".whereIsModule").classList.add("hidden")
+          }
+        })
+      })
+    </script>
   </body>
 </html>
