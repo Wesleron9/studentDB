@@ -22,10 +22,11 @@ $data = json_decode(file_get_contents("php://input"));
     $passwd = md5($passwd."matveeva");
 
 require "connection-to-db.php";
-    $mysql->query("INSERT INTO `users` (`login`, `pass`, `name`)
+    $mysql->query("INSERT INTO `temp users` (`login`, `pass`, `name`)
     VALUES ('$login', '$passwd', '$name')");
    $mysql->close();
 //echo $_POST['login'];
 //$login = $_POST['login'];
-echo "Вы успешно зарегистрировались";
+//echo "Вы успешно зарегистрировались<br>";
+//echo "Все";
 ?> 

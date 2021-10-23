@@ -8,7 +8,14 @@ $login = filter_var(trim($data->login),
     FILTER_SANITIZE_STRING);
 $passwd = filter_var(trim($data->password),
     FILTER_SANITIZE_STRING);
-
+if ($login ="") {
+    echo "Введите логин";
+    exit();
+    }
+    else if ($passwd = "") {
+    echo "Введите пароль";
+        exit();
+        }
 $passwd = md5($passwd."matveeva");
 
 require "connection-to-db.php";
@@ -28,5 +35,7 @@ $mysql->close();
 
 $user = [name=> $user[name], role=> $role[role], photo=> $user['way to photo']];
 $json = json_encode($user, JSON_UNESCAPED_UNICODE);
-print_r($json);
+//print_r($json);
+//echo "Логин: ".$login<br>;
+//echo "Пароль: ".$passwd;
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 20 2021 г., 19:32
+-- Время создания: Окт 24 2021 г., 00:03
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -22,6 +22,33 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `dorm_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `dorm_db`;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `modules`
+--
+
+CREATE TABLE `modules` (
+  `modules` varchar(20) NOT NULL,
+  `access level` int(3) NOT NULL,
+  `css` varchar(100) NOT NULL,
+  `java` varchar(100) NOT NULL,
+  `html` varchar(100) NOT NULL,
+  `php` varchar(100) CHARACTER SET utf8 COLLATE utf8_estonian_ci NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='modules';
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `mudels-role`
+--
+
+CREATE TABLE `mudels-role` (
+  `role` varchar(20) NOT NULL,
+  `module` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -550,6 +577,35 @@ INSERT INTO `stud` (`id`, `name`, `Room`, `Group`, `mother's name`, `father's na
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `temp users`
+--
+
+CREATE TABLE `temp users` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `pass` varchar(32) NOT NULL,
+  `role` int(3) DEFAULT NULL,
+  `Confirmed` tinyint(1) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `way to photo` varchar(250) DEFAULT NULL,
+  `access level` int(3) NOT NULL DEFAULT '0',
+  `key` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `temp users`
+--
+
+INSERT INTO `temp users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`, `access level`, `key`) VALUES
+(1, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, 127, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg', 999, NULL),
+(2, 'Шефер Татьяна Эдуардовна', 'vshtn', '22b23f5b30f03de84baacc7cb0dbedec', NULL, NULL, NULL, NULL, 0, NULL),
+(3, 'Зарипова Ангелина', 'zaripova-99@mail.ru', '6980315591f70a75937c7db5d5e7cd9e', NULL, NULL, NULL, NULL, 0, NULL),
+(17, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -571,7 +627,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`, `access level`, `key`) VALUES
-(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, NULL, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg', 999, NULL);
+(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, NULL, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg', 999, NULL),
+(11, 'Шефер Татьяна Эдуардовна', 'vshtn', '22b23f5b30f03de84baacc7cb0dbedec', NULL, NULL, NULL, NULL, 0, NULL),
+(12, 'Зарипова Ангелина', 'zaripova-99@mail.ru', '6980315591f70a75937c7db5d5e7cd9e', NULL, NULL, NULL, NULL, 0, NULL),
+(13, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL),
+(14, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL),
+(15, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -582,6 +643,12 @@ INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`
 --
 ALTER TABLE `stud`
   ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Индексы таблицы `temp users`
+--
+ALTER TABLE `temp users`
+  ADD UNIQUE KEY `UNIQUE` (`id`) USING BTREE;
 
 --
 -- Индексы таблицы `users`
@@ -600,10 +667,16 @@ ALTER TABLE `stud`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=474;
 
 --
+-- AUTO_INCREMENT для таблицы `temp users`
+--
+ALTER TABLE `temp users`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
