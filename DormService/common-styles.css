@@ -3,7 +3,7 @@ body {
   background-color: #262b35;
   color: #eaeaea;
   margin: 0;
-  padding: 20px;
+  padding: 0;
 }
 
 * {
@@ -110,4 +110,54 @@ input[type="password"]:focus:-ms-input-placeholder {
 .button:active {
   background-color: #eaeaea;
   color: #4c5b98;
+}
+
+/* Pop-up */
+.pop-up-wrapper {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+
+.pop-up {
+  -webkit-box-shadow: 0px 0px 17px 5px rgba(0, 0, 0, 0.8);
+  box-shadow: 0px 0px 17px 5px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-flow: column;
+  background-color: #353e50;
+  width: 30%;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pop-up .top {
+  background-color: #272E3B;
+  height: 20px;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.pop-up .message {
+  padding: 15px 25px;
+}
+
+.pop-up .bottom {
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: flex-end;
+  background-color: #272E3B;
+}
+
+.pop-up .bottom .button {
+  font-size: 1.2rem;
+  width: auto;
+  height: auto;
+  padding: 2px 10px;
+  margin: 5px;
 }
