@@ -8,6 +8,7 @@
 
     <!-- Скрипт с функцией для запроса SendRequest() -->
     <script src="request.js" defer></script>
+    <script src="popup.js" defer></script>
     <script src="main-script.js" defer></script>
     <!-- Styles -->
     <link rel="stylesheet" href="login-style.css" />
@@ -15,7 +16,6 @@
   </head>
 
   <body>
-    
     <!-- Top bar с лого и кнопкой -->
     <div class="top-bar">
       <div id="back-btn" class="button-back hidden">
@@ -77,32 +77,33 @@
 
     <!-- Окно "Регистрация" -->
     <div class="screen reg-screen">
-        <div class="col col1">
-          <img src="../../image/icons/anonymous.png" alt="Who are you" />
+      <div class="col col1">
+        <img src="../../image/icons/anonymous.png" alt="Who are you" />
+      </div>
+      <div class="col col2">
+        <div class="registration">
+          <input
+            id="reg-name"
+            type="text"
+            name="name"
+            placeholder="Ваше Ф.И.О."
+          />
+          <input
+            id="reg-login"
+            type="text"
+            name="login"
+            placeholder="Придумайте логин"
+          />
+          <input
+            id="reg-password"
+            type="password"
+            name="password"
+            placeholder="Придумайте пароль"
+          />
+          <div id="send-reg-form-btn" class="button">Регистрация</div>
         </div>
-        <div class="col col2">
-          <div class="registration">
-            <input
-              id="reg-name"
-              type="text"
-              name="name"
-              placeholder="Ваше Ф.И.О."
-            />
-            <input
-              id="reg-login"
-              type="text"
-              name="login"
-              placeholder="Придумайте логин"
-            />
-            <input
-              id="reg-password"
-              type="password"
-              name="password"
-              placeholder="Придумайте пароль"
-            />
-            <div id="send-reg-form-btn" class="button">Регистрация</div>
-          </div>
-        </div>
+      </div>
     </div>
+    <!-- Test pop-up -->
   </body>
 </html>

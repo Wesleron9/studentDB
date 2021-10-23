@@ -1,6 +1,5 @@
 body {
   overflow: hidden;
-  padding-top: -76px; /* Компенсация сдвига из-за top-bar*/
 }
 
 .screen {
@@ -55,6 +54,7 @@ body {
 
 .top-bar {
   position: sticky;
+  top: 0;
   display: flex;
   width: 100vw;
   justify-content: space-between;
