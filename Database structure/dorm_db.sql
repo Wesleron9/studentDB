@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 24 2021 г., 00:03
+-- Время создания: Окт 24 2021 г., 12:02
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -593,16 +593,6 @@ CREATE TABLE `temp users` (
   `key` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `temp users`
---
-
-INSERT INTO `temp users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`, `access level`, `key`) VALUES
-(1, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, 127, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg', 999, NULL),
-(2, 'Шефер Татьяна Эдуардовна', 'vshtn', '22b23f5b30f03de84baacc7cb0dbedec', NULL, NULL, NULL, NULL, 0, NULL),
-(3, 'Зарипова Ангелина', 'zaripova-99@mail.ru', '6980315591f70a75937c7db5d5e7cd9e', NULL, NULL, NULL, NULL, 0, NULL),
-(17, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -629,10 +619,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`, `access level`, `key`) VALUES
 (10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, NULL, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg', 999, NULL),
 (11, 'Шефер Татьяна Эдуардовна', 'vshtn', '22b23f5b30f03de84baacc7cb0dbedec', NULL, NULL, NULL, NULL, 0, NULL),
-(12, 'Зарипова Ангелина', 'zaripova-99@mail.ru', '6980315591f70a75937c7db5d5e7cd9e', NULL, NULL, NULL, NULL, 0, NULL),
-(13, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL),
-(14, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL),
-(15, 'Yyyyyyy', 'Hhhhhhuuu', 'ce646c7a78f46192f42ae859a687f305', NULL, NULL, NULL, NULL, 0, NULL);
+(12, 'Зарипова Ангелина', 'zaripova-99@mail.ru', '6980315591f70a75937c7db5d5e7cd9e', NULL, NULL, NULL, NULL, 0, NULL);
 
 --
 -- Индексы сохранённых таблиц
@@ -670,7 +657,7 @@ ALTER TABLE `stud`
 -- AUTO_INCREMENT для таблицы `temp users`
 --
 ALTER TABLE `temp users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

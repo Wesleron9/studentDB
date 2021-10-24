@@ -16,4 +16,4 @@ if ($_SESSION['user name']<>$login)
         $result = $mysql->query("SELECT `access level`, `wey`  FROM `modeules` WHERE  `name` = '$modules'");
         $module  =$result->fetch_assoc();
     }
-    if ($access_user >= $module['access level'])
+//    if ($access_user >= $module['access level'])
