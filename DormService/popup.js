@@ -26,7 +26,7 @@ function createPopUp(type, text, ...btnHandlers) {
       )
       //Удаляем поп-ап по клику
       document.querySelector("#pop-up-btn1").addEventListener("click", () => {
-        document.querySelector("pop-up-wrapper").remove()
+        document.querySelector(".pop-up-wrapper").remove()
       })
       break
     
