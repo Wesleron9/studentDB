@@ -11,7 +11,7 @@ function systemResponse($data)
 }
 
 // Функция, которую необходимо вызывать, если необходимо отдать ошибку на фронт
-function systemError($message)
+function systemMessage($message)
 {
-  echo json_encode(["error" => $message]);
+  echo json_encode(["message" => $message]);
 }

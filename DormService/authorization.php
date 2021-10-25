@@ -19,10 +19,10 @@ $passwd = filter_var(
 
 //Валидация
 if ($login == "") {
-    systemError("Введите логин");
+    systemMessage("Введите логин");
     exit();
 } else if ($passwd == "") {
-    systemError("Введите пароль");
+    systemMessage("Введите пароль");
     exit();
 }
 
@@ -42,11 +42,11 @@ $user = $result->fetch_assoc();
 
 //Если есть во временных пользователях
 if (count($user_temp) <> 0) {
-    systemError("Ожидайте подверждение вашей учетной записи");
+    systemMessage("Ожидайте подверждение вашей учетной записи");
     $mysql->close();
     exit();
 } else if (count($user) == 0) { //Если нет в основных пользователях
-    systemError("Неверный логин или пароль");
+    systemMessage("Неверный логин или пароль");
     $mysql->close();
     exit();
 }

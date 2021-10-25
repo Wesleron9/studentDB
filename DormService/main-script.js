@@ -27,8 +27,8 @@ document.querySelector("#log-btn").addEventListener("click", () => {
     (response) => {
       response = JSON.parse(response)
 
-      if (response.error) {
-        createPopUp("message", response.error)
+      if (response.message) {
+        createPopUp("message", response.message)
       }
     }
   )
@@ -54,6 +54,7 @@ document.querySelector("#send-reg-form-btn").addEventListener("click", () => {
   let login = document.querySelector("#reg-login").value
   let password = document.querySelector("#reg-password").value
 
+  // Валидация, тут должна быть валидация
   if (!name || !login || !password) {
     return
   }
@@ -62,5 +63,11 @@ document.querySelector("#send-reg-form-btn").addEventListener("click", () => {
     name: name,
     login: login,
     password: password,
+  }, (response) => {
+    response = JSON.parse(response)
+
+    if (response.message) {
+      createPopUp("message", response.message)
+    }
   })
 })

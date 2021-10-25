@@ -19,13 +19,13 @@ $name = filter_var(
 
 //Валидация
 if (mb_strlen($login) < 4 || mb_strlen($login) > 90) {
-    systemError("Недопустимая длина логина (От 4 до 90 символов)");
+    systemMessage("Недопустимая длина логина (От 4 до 90 символов)");
     exit();
 } else if (mb_strlen($passwd) < 8 || mb_strlen($login) > 32) {
-    systemError("Недопустимая длина пароля (от 8 до 32 символов)");
+    systemMessage("Недопустимая длина пароля (от 8 до 32 символов)");
     exit();
 } else if (mb_strlen($name) < 3 || mb_strlen($name) > 50) {
-    systemError("Недопустимая длина ФИО (от 3 до 50 символов)");
+    systemMessage("Недопустимая длина ФИО (от 3 до 50 символов)");
     exit();
 }
 
@@ -40,3 +40,5 @@ $mysql->query("INSERT INTO `temp users` (`login`, `pass`, `name`) VALUES ('$logi
 
 //Закрываем соеденение с БД
 $mysql->close();
+
+systemMessage("Запрос на регистрацию был отправлен. Ожидайте подверждения.");
