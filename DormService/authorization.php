@@ -1,4 +1,5 @@
 <?php
+include "response.php"; // Подключаем функции ответа
 //Объявляем на какие данные расчитан этот скрипт
 header("Content-Type: application/json");
 
@@ -17,11 +18,11 @@ $passwd = filter_var(
 );
 
 //Валидация
-if ($login = "") {
-    echo "Введите логин";
+if ($login == "") {
+    systemError("Введите логин");
     exit();
-} else if ($passwd = "") {
-    echo "Введите пароль";
+} else if ($passwd == "") {
+    systemError("Введите пароль");
     exit();
 }
 
@@ -41,18 +42,18 @@ $user = $result->fetch_assoc();
 
 //Если есть во временных пользователях
 if (count($user_temp) <> 0) {
-    echo "Ожидайте подверждение вашей учетной записи";
+    systemError("Ожидайте подверждение вашей учетной записи");
     $mysql->close();
     exit();
 } else if (count($user) == 0) { //Если нет в основных пользователях
-    echo "Неверный логин или пароль";
+    systemError("Неверный логин или пароль");
     $mysql->close();
     exit();
 }
 
 //После умпешной авторизации добавляем логин и ключ в сессию
 $_SESSION['user name'] = $login;
-$_SESSION[key] = $user[key];
+$_SESSION["key"] = $user["key"];
 
 //Узнаем роль пользователя
 $role_result = $mysql->query("SELECT `role`, `role id` FROM `role` WHERE  `role id` = $user[role]");
@@ -62,5 +63,5 @@ $role = $role_result->fetch_assoc();
 $mysql->close();
 
 //Создаём массив для передачи на фронт, и передаём его как json объект
-$user = [name => $user[name], role => $role[role], photo => $user['way to photo']];
-$json = json_encode($user, JSON_UNESCAPED_UNICODE);
+$user = ["name" => $user["name"], "role" => $role["role"], "photo" => $user['way to photo']];
+systemResponse($user);

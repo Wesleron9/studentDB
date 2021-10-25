@@ -1,23 +1,37 @@
 //----------------------------------------------------
 //-----------------Регистрация и вход-----------------
 //----------------------------------------------------
+
 // Обработка нажатия на кнопку "Войти"
 document.querySelector("#log-btn").addEventListener("click", () => {
   let login = document.querySelector("#log-login").value
   let password = document.querySelector("#log-pass").value
 
-  if (!login || !password) {
+  // Валидация логина и пароля
+  if (!login) {
+    createPopUp('message', "Введите логин!")
+    return
+  } else if (!password) {
+    createPopUp('message', "Введите пароль!")
     return
   }
 
   // Отправка логина и пароля на сервер
-  SendRequest("POST", "authorization.php", {
-    login: login,
-    password: password,
-  },
-  ()=>{
-    
-  })
+  SendRequest(
+    "POST",
+    "authorization.php",
+    {
+      login: login,
+      password: password,
+    },
+    (response) => {
+      response = JSON.parse(response)
+
+      if (response.error) {
+        createPopUp("message", response.error)
+      }
+    }
+  )
 })
 
 // Обработка нажатия на кнопку "Регистрация" (Переход к форме регистрации)

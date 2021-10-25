@@ -19,13 +19,13 @@ $name = filter_var(
 
 //Валидация
 if (mb_strlen($login) < 4 || mb_strlen($login) > 90) {
-    echo "Недопустимая длина логина (От 4 до 90 символов)";
+    systemError("Недопустимая длина логина (От 4 до 90 символов)");
     exit();
 } else if (mb_strlen($passwd) < 8 || mb_strlen($login) > 32) {
-    echo "Недопустимая длина пароля (от 8 до 32 символов)";
+    systemError("Недопустимая длина пароля (от 8 до 32 символов)");
     exit();
 } else if (mb_strlen($name) < 3 || mb_strlen($name) > 50) {
-    echo "Недопустимая длина ФИО (от 3 до 50 символов)";
+    systemError("Недопустимая длина ФИО (от 3 до 50 символов)");
     exit();
 }
 
@@ -36,8 +36,7 @@ $passwd = md5($passwd . "matveeva");
 require "connection-to-db.php";
 
 //Вносим данные о регистрации в таблицу не подтвержденных ползователей
-$mysql->query("INSERT INTO `temp users` (`login`, `pass`, `name`)
-    VALUES ('$login', '$passwd', '$name')");
+$mysql->query("INSERT INTO `temp users` (`login`, `pass`, `name`) VALUES ('$login', '$passwd', '$name')");
 
 //Закрываем соеденение с БД
 $mysql->close();
