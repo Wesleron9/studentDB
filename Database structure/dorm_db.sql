@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 26 2021 г., 20:34
+-- Время создания: Окт 26 2021 г., 20:57
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -49,7 +49,9 @@ CREATE TABLE `mudels-user` (
   `id` int(11) NOT NULL,
   `login` varchar(100) NOT NULL,
   `module` varchar(50) NOT NULL,
-  `module name` varchar(250) NOT NULL
+  `module name` varchar(250) NOT NULL,
+  `ico` varchar(250) NOT NULL,
+  `#` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -607,21 +609,18 @@ CREATE TABLE `users` (
   `login` varchar(100) NOT NULL,
   `pass` varchar(32) NOT NULL,
   `role` int(3) DEFAULT NULL,
-  `Confirmed` tinyint(1) DEFAULT NULL,
   `Email` varchar(50) DEFAULT NULL,
-  `way to photo` varchar(250) DEFAULT NULL,
-  `access level` int(3) NOT NULL DEFAULT '0',
-  `key` varchar(32) DEFAULT NULL
+  `way to photo` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`, `way to photo`, `access level`, `key`) VALUES
-(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, NULL, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg', 999, NULL),
-(11, 'Шефер Татьяна Эдуардовна', 'vshtn', '22b23f5b30f03de84baacc7cb0dbedec', NULL, NULL, NULL, NULL, 0, NULL),
-(12, 'Зарипова Ангелина', 'zaripova-99@mail.ru', '6980315591f70a75937c7db5d5e7cd9e', NULL, NULL, NULL, NULL, 0, NULL);
+INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Email`, `way to photo`) VALUES
+(10, 'Роман Сидоренко', 'sidorenri', '49e0ac7a251e79752178ad9fc4167336', 1, 'roman.sidorenko2000@icloud.com', 'resources/user-photo/avatar3.jpg'),
+(11, 'Шефер Татьяна Эдуардовна', 'vshtn', '22b23f5b30f03de84baacc7cb0dbedec', NULL, NULL, NULL),
+(12, 'Зарипова Ангелина', 'zaripova-99@mail.ru', '6980315591f70a75937c7db5d5e7cd9e', NULL, NULL, NULL);
 
 --
 -- Индексы сохранённых таблиц
