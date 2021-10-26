@@ -126,7 +126,7 @@ regBtn.addEventListener("click", () => {
   if (!login) {
     reg_loginInput.classList.add("wrongInput")
   }
-  
+
   if (!password) {
     reg_passwordInput.classList.add("wrongInput")
   }
