@@ -21,20 +21,20 @@ $module = filter_var(
     FILTER_SANITIZE_STRING
 );
 
-//$user = $_SESSION['user name'];
-$user = 'root';
-//if ($function = "menu"){
+$user = $_SESSION['user name'];
+//$user = 'root';
+if ($function = "menu"){
     $result = $mysql->query("SELECT `module`, `module name` FROM `mudels-user` WHERE  `login` = '$user'");
     while ($menu = $result->fetch_assoc()){
         echo "Пункты меню: ".$menu['module'].'<br>';
     }
 
-//}
-//elseif ($function ="module"){
-//
-//}
-//elseif ($function = "access"){
-//
-//}
+}
+elseif ($function ="module"){
+
+}
+elseif ($function = "access"){
+
+}
 print_r($menu);
 $mysql->close();
