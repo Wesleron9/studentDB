@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 24 2021 г., 12:02
+-- Время создания: Окт 26 2021 г., 20:34
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -42,12 +42,14 @@ CREATE TABLE `modules` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `mudels-role`
+-- Структура таблицы `mudels-user`
 --
 
-CREATE TABLE `mudels-role` (
-  `role` varchar(20) NOT NULL,
-  `module` varchar(50) NOT NULL
+CREATE TABLE `mudels-user` (
+  `id` int(11) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `module` varchar(50) NOT NULL,
+  `module name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -626,6 +628,12 @@ INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Confirmed`, `Email`
 --
 
 --
+-- Индексы таблицы `mudels-user`
+--
+ALTER TABLE `mudels-user`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- Индексы таблицы `stud`
 --
 ALTER TABLE `stud`
@@ -648,6 +656,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `mudels-user`
+--
+ALTER TABLE `mudels-user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT для таблицы `stud`
 --
 ALTER TABLE `stud`
@@ -657,13 +671,13 @@ ALTER TABLE `stud`
 -- AUTO_INCREMENT для таблицы `temp users`
 --
 ALTER TABLE `temp users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
