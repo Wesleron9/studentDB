@@ -87,6 +87,12 @@ input[type="password"]:focus:-ms-input-placeholder {
   transition: opacity 0.3s ease;
 }
 
+input[type="text"].wrongInput,
+input[type="password"].wrongInput {
+  border-bottom: 2px solid #EB4C42;
+}
+
+
 .button {
   user-select: none;
   border-radius: 3px;
@@ -110,6 +116,26 @@ input[type="password"]:focus:-ms-input-placeholder {
 .button:active {
   background-color: #eaeaea;
   color: #4c5b98;
+}
+
+/* Стили для недоступной кнопки */
+.button.unavailable {
+  background-color: #595D6C;
+  color: #A5A5A5;
+}
+
+.button.unavailable:hover {
+  cursor: not-allowed;
+}
+
+.button.unavailable:focus {
+  background-color: #595D6C;
+  color: #A5A5A5;
+}
+
+.button.unavailable:active {
+  background-color: #595D6C;
+  color: #A5A5A5;
 }
 
 /* Pop-up */
