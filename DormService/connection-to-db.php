@@ -1,4 +1,4 @@
 <?php
 //Подключаемся к БД
-$mysql = new mysqli('127.0.0.1', 'root', 'rs2076571', 'dorm_db');
+$mysql = new mysqli('server71.hosting.reg.ru:3306/', 'u1466303_dormdb', '6ZFF5imM5rvWHv8', 'u1466303_dormdb');
 ?>

@@ -5,17 +5,17 @@ require "connection-to-db.php";
 // $user = json_decode(file_get_contents("php://input"));
 
 // Reg module
-$menu_item = [
-  "Студенты" => [
-    "icon" => "image/icons/menu-icons/multiple-users-silhouette",
-    "modules" => [
-      [
-        "module-name" => "work-with-stud",
-        "Text" => "Работа с карточками студентов"
-      ]
-    ]
-  ]  
-];
+// $menu_item = [
+//   "Студенты" => [
+//     "icon" => "image/icons/menu-icons/multiple-users-silhouette",
+//     "modules" => [
+//       [
+//         "module-name" => "work-with-stud",
+//         "Text" => "Работа с карточками студентов"
+//       ]
+//     ]
+//   ]  
+// ];
 
-$menu_item = json_encode($menu_item, JSON_UNESCAPED_UNICODE);
-$mysql->query("INSERT INTO `menu` (`key`, `menu`) VALUES (NULL, '$menu_item')");
+// $menu_item = json_encode($menu_item, JSON_UNESCAPED_UNICODE);
+$mysql->query("INSERT INTO `users` (`id`, `name`, `login`, `pass`, `role`, `Email`, `way to photo`, `available_modules`) VALUES (NULL, '', '', '', NULL, NULL, NULL, NULL)");
