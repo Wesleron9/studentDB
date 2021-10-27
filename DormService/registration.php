@@ -1,4 +1,5 @@
 <?php
+include 'response.php';
 //Объявляем на какие данные расчитан этот скрипт
 header("Content-Type: application/json");
 
@@ -8,7 +9,7 @@ $login = filter_var(
     trim($data->login),
     FILTER_SANITIZE_STRING
 );
-$passwd = filter_var(
+$password = filter_var(
     trim($data->password),
     FILTER_SANITIZE_STRING
 );
@@ -17,11 +18,20 @@ $name = filter_var(
     FILTER_SANITIZE_STRING
 );
 
+$email = filter_var(
+    trim($data->email),
+    FILTER_SANITIZE_STRING
+);
+$tel = filter_var(
+    trim($data->tel),
+    FILTER_SANITIZE_STRING
+);
+
 //Валидация
 if (mb_strlen($login) < 4 || mb_strlen($login) > 90) {
     systemMessage("Недопустимая длина логина (От 4 до 90 символов)");
     exit();
-} else if (mb_strlen($passwd) < 8 || mb_strlen($login) > 32) {
+} else if (mb_strlen($password) < 8 || mb_strlen($login) > 32) {
     systemMessage("Недопустимая длина пароля (от 8 до 32 символов)");
     exit();
 } else if (mb_strlen($name) < 3 || mb_strlen($name) > 50) {
@@ -30,13 +40,13 @@ if (mb_strlen($login) < 4 || mb_strlen($login) > 90) {
 }
 
 //Добавляем соль к паролю и хешируем
-$passwd = md5($passwd . "matveeva");
+$password = md5($password . "matveeva");
 
 //Подключаемся к БД
 require "connection-to-db.php";
 
 //Вносим данные о регистрации в таблицу не подтвержденных ползователей
-$mysql->query("INSERT INTO `temp users` (`login`, `pass`, `name`) VALUES ('$login', '$passwd', '$name')");
+$mysql->query("INSERT INTO `temp-users` (`name`, `login`, `pass`, `tel`, `email`) VALUES ('$name', '$login', '$password', '$tel', '$email')");
 
 //Закрываем соеденение с БД
 $mysql->close();
