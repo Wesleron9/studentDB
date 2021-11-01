@@ -1,4 +1,0 @@
-[29-Oct-2021 22:03:56 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_assoc() on boolean in /home/dewal778/public_html/modules/test/session-test.php:15
-Stack trace:
-#0 {main}
-  thrown in /home/dewal778/public_html/modules/test/session-test.php on line 15
