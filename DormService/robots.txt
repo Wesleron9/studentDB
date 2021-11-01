@@ -1,5 +1,0 @@
-User-Agent: *
-Disallow: /_private/
-
-User-agent: Yandex 
-Disallow: /_private/
