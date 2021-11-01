@@ -33,11 +33,11 @@ $passwd = md5($passwd . "matveeva");
 require "connection-to-db.php";
 
 //Проверяем есть ли пользователь в таблице временных пользователей
-$result_temp = $mysql->query("SELECT `login`, `pass` FROM `temp users` WHERE  `login` = '$login' and `pass` = '$passwd'");
+$result_temp = $mysql->query("SELECT `login`, `pass` FROM `temp-users` WHERE  `login` = '$login' and `pass` = '$passwd'");
 $user_temp = $result_temp->fetch_assoc();
 
 //Проверяем есть ли пользователь в таблице основных пользователей
-$result = $mysql->query("SELECT `login`, `pass`, `name`, `role`, `key`, `way to photo` FROM `users` WHERE  `login` = '$login' and `pass` = '$passwd'");
+$result = $mysql->query("SELECT `login`, `pass`, `name`, `role`, `photo` FROM `users` WHERE  `login` = '$login' and `pass` = '$passwd'");
 $user = $result->fetch_assoc();
 //Если есть во временных пользователях
 if (count($user_temp) <> 0) {
@@ -50,7 +50,7 @@ if (count($user_temp) <> 0) {
     exit();
 }
 
-//После умпешной авторизации добавляем логин и ключ в сессию
+//После успешной авторизации добавляем логин и ключ в сессию
 $_SESSION['user name'] = $login;
 $_SESSION["key"] = $user["key"];
 
