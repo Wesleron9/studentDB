@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 26 2021 г., 20:57
+-- Время создания: Ноя 03 2021 г., 02:18
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -31,12 +31,10 @@ USE `dorm_db`;
 
 CREATE TABLE `modules` (
   `modules` varchar(20) NOT NULL,
-  `access level` int(3) NOT NULL,
   `css` varchar(100) NOT NULL,
   `java` varchar(100) NOT NULL,
   `html` varchar(100) NOT NULL,
-  `php` varchar(100) CHARACTER SET utf8 COLLATE utf8_estonian_ci NOT NULL,
-  `name` varchar(50) NOT NULL
+  `php` varchar(100) CHARACTER SET utf8 COLLATE utf8_estonian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='modules';
 
 -- --------------------------------------------------------
@@ -53,6 +51,16 @@ CREATE TABLE `mudels-user` (
   `ico` varchar(250) NOT NULL,
   `#` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `mudels-user`
+--
+
+INSERT INTO `mudels-user` (`id`, `login`, `module`, `module name`, `ico`, `#`) VALUES
+(1, 'root', 'Студенты', 'stud', 'image/icons/menu-icons/multiple-users-silhouette.png', 1),
+(2, 'root', 'Бухгалтерия', 'bux', 'image/icons/menu-icons/accounting.png', 2),
+(3, 'root', 'Прочее', 'old', 'image/icons/menu-icons/accounting.png', 4),
+(4, 'root', 'Настройки', 'seting', 'image/icons/menu-icons/accounting.png', 3);
 
 -- --------------------------------------------------------
 
@@ -658,7 +666,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `mudels-user`
 --
 ALTER TABLE `mudels-user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `stud`
