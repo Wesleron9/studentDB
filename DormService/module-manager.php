@@ -30,11 +30,11 @@ if ($user == " ") { // Если никто не авторизован
     exit(); // Завершаем скрипт
 } elseif ($task == "menu") { // Запрос меню
 
-    $result = $mysql->query("SELECT `module`, `module name`, `ico`, `#` FROM `mudels-user` WHERE  `login` = '$user' ORDER BY `#`"); // Запрос к БД какие модули доступны
+    $result = $mysql->query("SELECT `module`, `module name`, `ico`, `#` FROM `mudels-user` WHERE  `login` = '$user' ORDER BY `order`"); // Запрос к БД какие модули доступны
 
     if ($result->num_rows > 0) { // Если запрос отдал больше 0 строк
         while ($menu = $result->fetch_assoc()) { // Выбераем записи
-            $arr[$menu['#']] = array("menu-name" => $menu['module'], "module-name" => $menu['module name'], "path-ico" => $menu['ico']); // Добавляем записи в массив
+            $arr[$menu['order']] = array("menu-name" => $menu['module'], "module-name" => $menu['module name'], "path-ico" => $menu['ico']); // Добавляем записи в массив
         }
         systemResponse($arr); // Отправляем маcсив на фронт
     } else { // Если запрос не отдал ни одной строки
