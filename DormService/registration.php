@@ -31,10 +31,12 @@ $tel = filter_var(
 if (mb_strlen($login) < 4 || mb_strlen($login) > 90) {
     systemMessage("Недопустимая длина логина (От 4 до 90 символов)");
     exit();
-} else if (mb_strlen($password) < 8 || mb_strlen($login) > 32) {
+}
+elseif (mb_strlen($password) < 8 || mb_strlen($login) > 32) {
     systemMessage("Недопустимая длина пароля (от 8 до 32 символов)");
     exit();
-} else if (mb_strlen($name) < 3 || mb_strlen($name) > 50) {
+}
+elseif (mb_strlen($name) < 3 || mb_strlen($name) > 50) {
     systemMessage("Недопустимая длина ФИО (от 3 до 50 символов)");
     exit();
 }
