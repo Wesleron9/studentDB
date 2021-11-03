@@ -1,6 +1,6 @@
 <?php
 //Подключаемся к БД
-$mysql = new mysqli('server71.hosting.reg.ru:3306/', 'u1466303_dormdb', '6ZFF5imM5rvWHv8', 'u1466303_dormdb');
+$mysql = new mysqli('s10.steadyhost.ru:3306/', 'dewal778_html', 'Rs6730489!', 'dewal778_dorm');
 
 // Установка кодировки соединения
 $mysql->query("SET NAMES utf8");
