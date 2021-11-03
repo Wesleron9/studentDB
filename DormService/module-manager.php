@@ -34,7 +34,7 @@ if ($user == " ") { // Если никто не авторизован
 
     if ($result->num_rows > 0) { // Если запрос отдал больше 0 строк
         while ($menu = $result->fetch_assoc()) { // Выбераем записи
-            $arr[$menu['#']] = array("menu-name" => $menu['module'], "module-name" => $menu['module name'], "wey-ico" => $menu['ico']); // Добавляем записи в массив
+            $arr[$menu['#']] = array("menu-name" => $menu['module'], "module-name" => $menu['module name'], "path-ico" => $menu['ico']); // Добавляем записи в массив
         }
         systemResponse($arr); // Отправляем маcсив на фронт
     } else { // Если запрос не отдал ни одной строки
@@ -50,9 +50,9 @@ if ($user == " ") { // Если никто не авторизован
     if ($result->num_rows > 0) { // Если доступен
 
         $result = $mysql->query("SELECT `css`, `java`, `html`, `php` FROM `mudels` WHERE  `mudels` = '$module'"); // Находим пути до модуля
-        $wey_modules = $result->fetch_assoc(); // Выбераем записи
+        $path_modules = $result->fetch_assoc(); // Выбераем записи
 
-        $arr = ["css" => $wey_modules['css'], "java" => $wey_modules['java'], "html" => $wey_modules['html'], "php" => $wey_modules['php']]; // Добавляем записи в массив
+        $arr = ["css" => $path_modules['css'], "java" => $path_modules['java'], "html" => $path_modules['html'], "php" => $path_modules['php']]; // Добавляем записи в массив
         systemResponse($arr); // Отправляем маcсив на фронт
 
 

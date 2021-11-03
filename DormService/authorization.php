@@ -62,5 +62,5 @@ $role = $role_result->fetch_assoc();
 $mysql->close();
 
 //Создаём массив для передачи на фронт, и передаём его как json объект
-$user = ["name" => $user["name"], "role" => $role["role"], "photo" => $user['way to photo']];
+$user = ["name" => $user["name"], "role" => $role["role"], "photo" => $user['photo']];
 systemResponse($user);
