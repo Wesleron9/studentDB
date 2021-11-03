@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `dorm_db`
+-- База данных: `dewal778_dorm`
 --
-CREATE DATABASE IF NOT EXISTS `dorm_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `dorm_db`;
+CREATE DATABASE IF NOT EXISTS `dewal778_dorm` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `dewal778_dorm`;
 
 -- --------------------------------------------------------
 
