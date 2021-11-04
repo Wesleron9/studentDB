@@ -47,16 +47,14 @@ logBtn.addEventListener("click", () => {
       password: password,
     },
     (response) => {
-      // response = JSON.parse(response)
+      response = JSON.parse(response)
 
       if (response.message) {
         createPopUp("message", response.message)
         return
       }
 
-      createPopUp("message", response)
-
-      // transformToMenu()
+      transformToWorkspace(response.name, response.role, response.photo)
     }
   )
 })
@@ -160,3 +158,10 @@ regBtn.addEventListener("click", () => {
     }
   )
 })
+
+function transformToWorkspace(name, role, photoPath) {
+  const wrapper = document.querySelector(".auth-wrapper")
+  wrapper.innerHTML = ''
+  wrapper.classList.add("side-menu")
+  alert(`Name: ${name}, Role: ${role}, Photo: ${photoPath}`)
+}

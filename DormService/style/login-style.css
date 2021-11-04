@@ -2,6 +2,10 @@ body {
   overflow: hidden;
 }
 
+.auth-wrapper {
+  background-color: #262b35;
+}
+
 .screen {
   width: 100vw;
   height: 100vh;
