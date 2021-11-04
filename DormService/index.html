@@ -7,12 +7,13 @@
     <title>DormService</title>
 
     <!-- Скрипт с функцией для запроса SendRequest() -->
-    <script src="request.js" defer></script>
-    <script src="popup.js" defer></script>
-    <script src="main-script.js" defer></script>
+    <script src="/script/" defer></script>
+    <script src="/script/popup.js" defer></script>
+    <script src="/script/main-script.js" defer></script>
     <!-- Styles -->
-    <link rel="stylesheet" href="login-style.css" />
-    <link rel="stylesheet" href="common-styles.css" />
+    <link rel="stylesheet" href="/style/common-styles.css" />
+    <link rel="stylesheet" href="/style/login-style.css" />
+    <link rel="stylesheet" href="/style/menu-style.css" />
   </head>
 
   <body>
@@ -62,11 +63,18 @@
       <div class="screen login-screen">
         <div class="login">
           <img src="../../image/icons/user.png" alt="user.png" />
-          <input id="log-login" type="text" name="login" placeholder="Логин" />
+          <input
+            id="log-login"
+            type="text"
+            name="login"
+            value="test"
+            placeholder="Логин"
+          />
           <input
             id="log-pass"
             type="password"
             name="password"
+            value="test123"
             placeholder="Пароль"
           />
           <div class="buttons">

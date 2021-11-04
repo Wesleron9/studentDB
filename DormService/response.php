@@ -7,7 +7,7 @@ function systemResponse($data)
     exit();
   }
   // Если все в порядке и есть что отправлять, отправляем ответ на фронт 
-  echo json_encode($data);
+  echo json_encode($data, JSON_UNESCAPED_UNICODE);
 }
 
 // Функция, которую необходимо вызывать, если необходимо отдать ошибку на фронт

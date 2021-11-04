@@ -40,7 +40,7 @@ $user_temp = $result_temp->fetch_assoc();
 $result = $mysql->query("SELECT `login`, `pass`, `name`, `role`, `photo` FROM `users` WHERE  `login` = '$login' and `pass` = '$passwd'");
 $user = $result->fetch_assoc();
 //Если есть во временных пользователях
-if (count($user_temp) <> 0) {
+if (count($user_temp) != 0) {
     systemMessage("Ожидайте подверждение вашей учетной записи");
     $mysql->close();
     exit();

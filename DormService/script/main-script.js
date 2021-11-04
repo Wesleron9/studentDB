@@ -47,11 +47,16 @@ logBtn.addEventListener("click", () => {
       password: password,
     },
     (response) => {
-      response = JSON.parse(response)
+      // response = JSON.parse(response)
 
       if (response.message) {
         createPopUp("message", response.message)
+        return
       }
+
+      createPopUp("message", response)
+
+      // transformToMenu()
     }
   )
 })
