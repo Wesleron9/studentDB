@@ -1,5 +1,5 @@
 <?php
-include "../../connection-to-db.php";
+include "../../DB-Config.php";
 $result = $mysql->query("SELECT `name`, `id`, `room` FROM `stud` WHERE `Check out Date` = ''");
 $num = 1;
 $user = 1;

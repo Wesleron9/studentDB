@@ -45,7 +45,7 @@ elseif (mb_strlen($name) < 3 || mb_strlen($name) > 50) {
 $password = md5($password . "matveeva");
 
 //Подключаемся к БД
-require "connection-to-db.php";
+require "DB-Config.php";
 
 //Вносим данные о регистрации в таблицу не подтвержденных ползователей
 $mysql->query("INSERT INTO `temp-users` (`name`, `login`, `pass`, `tel`, `email`) VALUES ('$name', '$login', '$password', '$tel', '$email')");

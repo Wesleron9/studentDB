@@ -9,7 +9,7 @@ $modules = filter_var(trim($data->modules),
 if ($_SESSION['user name']<>$login)
     echo 'Ошибка авторизации';
     else{
-        require "../../connection-to-db.php";
+        require "../../DB-Config.php";
 
         $result = $mysql->query("SELECT `access level` FROM `users` WHERE  `login` = '$_SESSION[login]'");
         $access_user  =$result->fetch_assoc();
