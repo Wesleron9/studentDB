@@ -29,7 +29,6 @@ if ($user == " ") { // Если никто не авторизован
     $mysql->close(); // Закрываем соеденение с БД
     exit(); // Завершаем скрипт
 } elseif ($task == "menu") { // Запрос меню
-$user = "test";
     $result = $mysql->query("SELECT `module`, `module-name`, `icon`, `order` FROM `modules-user` WHERE  `login` = '$user' ORDER BY `order`"); // Запрос к БД какие модули доступны
 
     if ($result->num_rows > 0) { // Если запрос отдал больше 0 строк
