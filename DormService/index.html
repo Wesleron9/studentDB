@@ -19,7 +19,7 @@
   <body>
     <div class="auth-wrapper">
       <!-- Top bar с лого и кнопкой -->
-      <div class="top-bar">
+      <div class="top-bar _anim">
         <div id="back-btn" class="button-back hidden">
           <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
             <title />
@@ -29,14 +29,15 @@
           </svg>
           Назад
         </div>
-        <img class="logo" src="image/LOGO2.svg" alt="LOGO" />
+        <img class="logo" src="/image/LOGO2.svg" alt="LOGO" />
       </div>
 
       <!-- Окно "Вход в аккаунт" -->
       <div class="screen login-screen">
         <div class="login">
-          <img src="../../image/icons/user.png" alt="user.png" />
+          <img class="_anim" src="/image/icons/user.png" alt="user.png" />
           <input
+            class="_anim"
             id="log-login"
             type="text"
             name="login"
@@ -44,6 +45,7 @@
             placeholder="Логин"
           />
           <input
+            class="_anim"
             id="log-pass"
             type="password"
             name="password"
@@ -51,8 +53,8 @@
             placeholder="Пароль"
           />
           <div class="buttons">
-            <div id="log-btn" class="button">Войти</div>
-            <div id="reg-btn" class="button">Регистрация</div>
+            <div id="log-btn" class="button _anim">Войти</div>
+            <div id="reg-btn" class="button _anim">Регистрация</div>
           </div>
         </div>
       </div>
@@ -60,7 +62,7 @@
       <!-- Окно "Регистрация" -->
       <div class="screen reg-screen">
         <div class="col col1">
-          <img src="../../image/icons/anonymous.png" alt="Who are you" />
+          <img src="/image/icons/anonymous.png" alt="Who are you" />
         </div>
         <div class="col col2">
           <div class="registration">

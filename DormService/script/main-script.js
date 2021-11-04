@@ -161,7 +161,16 @@ regBtn.addEventListener("click", () => {
 
 function transformToWorkspace(name, role, photoPath) {
   const wrapper = document.querySelector(".auth-wrapper")
-  wrapper.innerHTML = ''
-  wrapper.classList.add("side-menu")
-  alert(`Name: ${name}, Role: ${role}, Photo: ${photoPath}`)
+  wrapper.querySelector(".reg-screen").remove()
+  const elementsForFadeOut = wrapper.querySelectorAll("._anim")
+  setTimeout(() => {
+    wrapper.classList.add("side-menu")
+  }, 150 * elementsForFadeOut.length)
+  elementsForFadeOut.forEach((el, index) => {
+    setTimeout(() => {
+      el.classList.add("fadeOut")
+    }, 150 * index)
+  })
+  // wrapper.classList.add("side-menu")
+  // alert(`Name: ${name}, Role: ${role}, Photo: ${photoPath}`)
 }

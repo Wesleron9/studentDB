@@ -4,10 +4,6 @@ body {
  margin: 0;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 .side-menu {
   color: #EAEAEA;
   width: 250px;
@@ -15,6 +11,7 @@ body {
   overflow: hidden;
   background-color: #262B35;
   border-radius: 0px 20px 20px 0px;
+  transition: border-radius, width 1s;
 }
 
 .side-menu hr {

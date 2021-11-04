@@ -4,6 +4,7 @@ body {
 
 .auth-wrapper {
   background-color: #262b35;
+  width: 100vw;
 }
 
 .screen {
