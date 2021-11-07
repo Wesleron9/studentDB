@@ -97,7 +97,6 @@ document.querySelector("#back-btn").addEventListener("click", () => {
 let reg_nameInput = document.querySelector("#reg-name") //Поле имени в форме регистрации
 let reg_emailInput = document.querySelector("#reg-email") //Поле почты в форме регистрации
 let reg_telInput = document.querySelector("#reg-tel") //Поле телефона в форме регистрации
-let reg_loginInput = document.querySelector("#reg-login") //Поле логина в форме регистрации
 let reg_passwordInput = document.querySelector("#reg-password") //Поле пароля в форме регистрации
 let regBtn = document.querySelector("#send-reg-form-btn") //Кнопка "Регистрация"
 
@@ -106,7 +105,6 @@ regBtn.addEventListener("click", () => {
   let name = reg_nameInput.value
   let email = reg_emailInput.value
   let tel = reg_telInput.value
-  let login = reg_loginInput.value
   let password = reg_passwordInput.value
 
   if (regBtn.classList.contains("unavailable")) {
@@ -126,15 +124,11 @@ regBtn.addEventListener("click", () => {
     reg_telInput.classList.add("wrongInput")
   }
 
-  if (!login) {
-    reg_loginInput.classList.add("wrongInput")
-  }
-
   if (!password) {
     reg_passwordInput.classList.add("wrongInput")
   }
 
-  if (!name || !login || !password || !email || !tel) {
+  if (!name || !password || !email || !tel) {
     lockButton(regBtn)
     return
   }
