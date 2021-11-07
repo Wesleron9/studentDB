@@ -58,7 +58,7 @@ body {
 }
 
 .top-bar {
-  position: sticky;
+  position: absolute;
   top: 0;
   display: flex;
   width: 100vw;
