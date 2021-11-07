@@ -182,6 +182,7 @@ const reg_nameInput = document.querySelector("#reg-name") //Поле имени 
 const reg_emailInput = document.querySelector("#reg-email") //Поле почты в форме регистрации
 const reg_telInput = document.querySelector("#reg-tel") //Поле телефона в форме регистрации
 const reg_passwordInput = document.querySelector("#reg-password") //Поле пароля в форме регистрации
+const reg_passwordInput2 = document.querySelector("#reg-password2") //Поле пароля в форме регистрации
 const regBtn = document.querySelector("#send-reg-form-btn") //Кнопка "Регистрация"
 
 function signUp() {
@@ -189,6 +190,7 @@ function signUp() {
   let email = reg_emailInput.value
   let tel = reg_telInput.value
   let password = reg_passwordInput.value
+  let password2 = reg_passwordInput2.value
 
   if (regBtn.classList.contains("unavailable")) {
     return
@@ -209,6 +211,12 @@ function signUp() {
 
   if (!password) {
     reg_passwordInput.classList.add("wrongInput")
+  }
+
+  if (password !== password2) {
+    createPopUp("message", "Пароли не совпадают!")
+    reg_passwordInput.classList.add("wrongInput")
+    reg_passwordInput2.classList.add("wrongInput")
   }
 
   if (!name || !password || !email || !tel) {
