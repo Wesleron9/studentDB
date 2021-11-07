@@ -11,7 +11,8 @@ body {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="tel"] {
   width: 340px;
   height: 45px;
   border-radius: 3px;
@@ -26,13 +27,15 @@ input[type="password"] {
 }
 
 input[type="text"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="tel"]:focus {
   border-bottom: 2px solid #fff;
   transition: 0.3s ease;
 }
 
 input[type="text"]::-webkit-input-placeholder,
-input[type="password"]::-webkit-input-placeholder {
+input[type="password"]::-webkit-input-placeholder,
+input[type="tel"]::-webkit-input-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
@@ -40,7 +43,8 @@ input[type="password"]::-webkit-input-placeholder {
 }
 
 input[type="text"]::-moz-placeholder,
-input[type="password"]::-moz-placeholder {
+input[type="password"]::-moz-placeholder
+input[type="tel"]::-moz-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
@@ -48,7 +52,8 @@ input[type="password"]::-moz-placeholder {
 }
 
 input[type="text"]:-moz-placeholder,
-input[type="text"]:-moz-placeholder {
+input[type="text"]:-moz-placeholder,
+input[type="tel"]:-moz-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
@@ -56,7 +61,8 @@ input[type="text"]:-moz-placeholder {
 }
 
 input[type="text"]:-ms-input-placeholder,
-input[type="password"]:-ms-input-placeholder {
+input[type="password"]:-ms-input-placeholder ,
+input[type="tel"]:-ms-input-placeholder{
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
@@ -64,34 +70,38 @@ input[type="password"]:-ms-input-placeholder {
 }
 
 input[type="text"]:focus::-webkit-input-placeholder,
-input[type="password"]:focus::-webkit-input-placeholder {
+input[type="password"]:focus::-webkit-input-placeholder,
+input[type="tel"]:focus::-webkit-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 input[type="text"]:focus::-moz-placeholder,
-input[type="password"]:focus::-moz-placeholder {
+input[type="password"]:focus::-moz-placeholder,
+input[type="tel"]:focus::-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 input[type="text"]:focus:-moz-placeholder,
-input[type="password"]:focus:-moz-placeholder {
+input[type="password"]:focus:-moz-placeholder,
+input[type="tel"]:focus:-moz-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 input[type="text"]:focus:-ms-input-placeholder,
-input[type="password"]:focus:-ms-input-placeholder {
+input[type="password"]:focus:-ms-input-placeholder,
+input[type="tel"]:focus:-ms-input-placeholder {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 input[type="text"].wrongInput,
-input[type="password"].wrongInput {
-  border-bottom: 2px solid #EB4C42;
+input[type="password"].wrongInput,
+input[type="tel"].wrongInput {
+  border-bottom: 2px solid #eb4c42;
 }
-
 
 .button {
   user-select: none;
@@ -120,8 +130,8 @@ input[type="password"].wrongInput {
 
 /* Стили для недоступной кнопки */
 .button.unavailable {
-  background-color: #595D6C;
-  color: #A5A5A5;
+  background-color: #595d6c;
+  color: #a5a5a5;
 }
 
 .button.unavailable:hover {
@@ -129,13 +139,13 @@ input[type="password"].wrongInput {
 }
 
 .button.unavailable:focus {
-  background-color: #595D6C;
-  color: #A5A5A5;
+  background-color: #595d6c;
+  color: #a5a5a5;
 }
 
 .button.unavailable:active {
-  background-color: #595D6C;
-  color: #A5A5A5;
+  background-color: #595d6c;
+  color: #a5a5a5;
 }
 
 /* Pop-up */
@@ -162,7 +172,7 @@ input[type="password"].wrongInput {
 }
 
 .pop-up .top {
-  background-color: #272E3B;
+  background-color: #272e3b;
   height: 20px;
   padding: 10px 10px;
   display: flex;
@@ -177,7 +187,7 @@ input[type="password"].wrongInput {
   flex-wrap: wrap;
   display: flex;
   justify-content: flex-end;
-  background-color: #272E3B;
+  background-color: #272e3b;
 }
 
 .pop-up .bottom .button {
@@ -226,7 +236,7 @@ input[type="password"].wrongInput {
 .fadeOut {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-timing-function: ease;
   animation-fill-mode: both;
 }
@@ -234,6 +244,6 @@ input[type="password"].wrongInput {
 .fadeIn {
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
-  animation-duration: .3s;
+  animation-duration: 0.3s;
   animation-timing-function: ease;
 }

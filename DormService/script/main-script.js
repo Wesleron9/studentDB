@@ -217,6 +217,7 @@ function signUp() {
     createPopUp("message", "Пароли не совпадают!")
     reg_passwordInput.classList.add("wrongInput")
     reg_passwordInput2.classList.add("wrongInput")
+    return
   }
 
   if (!name || !password || !email || !tel) {
