@@ -61,8 +61,16 @@ function transformToWorkspace() {
 
     // После анимации превращения в меню
     setTimeout(() => {
-      // Позже нужно заменить регуляркой!!!
-      let userName = `${user.name.split(" ")[0]} ${user.name.split(" ")[1]} ${user.name.split(" ")[2].split("")[0]}.`
+      // Позже нужно заменить регуляркой!!! это затыыычка
+      let userName
+      try {
+        userName = `${user.name.split(" ")[0]} ${user.name.split(" ")[1]} ${
+          user.name.split(" ")[2].split("")[0]
+        }.`
+      } catch (err) {
+        console.log("Неправильный у вас какой-то user.name" + err)
+        userName = user.name
+      }
 
       wrapper.innerHTML = `<img class="logo _anim" src="image/LOGO2.svg" alt="LOGO">
         <div class="user-block _anim">
@@ -150,8 +158,8 @@ function signIn() {
         return
       }
 
-      // user.name = response.name
-      user.name = "Ковалев Вадим Алескандрович"
+      user.name = response.name
+      // user.name = "Ковалев Вадим Алескандрович"
       user.role = response.role
       user.photo = response.photo
 
