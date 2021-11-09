@@ -246,4 +246,5 @@ input[type="tel"].wrongInput {
   animation-name: fadeIn;
   animation-duration: 0.3s;
   animation-timing-function: ease;
+  animation-fill-mode: both;
 }

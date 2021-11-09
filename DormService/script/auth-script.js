@@ -1,3 +1,9 @@
+const user = {
+  name: "",
+  role: "",
+  photo: "",
+}
+
 setScreenTabs()
 
 // Функция для контроля перехода по элементам с помощью 'TAB'
@@ -40,7 +46,7 @@ function lockButton(button) {
 }
 
 // Функция перехода от формы логина к рабочему пространству платформы
-function transformToWorkspace(name, role, photoPath) {
+function transformToWorkspace() {
   const wrapper = document.querySelector(".auth-wrapper")
 
   //Удаление окна регистрации
@@ -49,12 +55,44 @@ function transformToWorkspace(name, role, photoPath) {
   // Сбор элементов для анимации исчезновения
   const elementsForFadeOut = wrapper.querySelectorAll("._anim")
 
-  // После анимации исчезновения последнего элемента превращаем wrapper в боковое меню и удаляем содержимое
+  // После анимации исчезновения последнего элемента превращаем wrapper в боковое меню и заменяем содержимое
   setTimeout(() => {
     wrapper.classList.add("side-menu")
-    wrapper.innerHTML = ""
+
+    // После анимации превращения в меню
+    setTimeout(() => {
+      // Позже нужно заменить регуляркой!!!
+      let userName = `${user.name.split(" ")[0]} ${user.name.split(" ")[1]} ${user.name.split(" ")[2].split("")[0]}.`
+
+      wrapper.innerHTML = `<img class="logo _anim" src="image/LOGO2.svg" alt="LOGO">
+        <div class="user-block _anim">
+          <div class="user-photo _anim">
+            <img src="${user.photo}" alt="">
+          </div>
+          <div class="user-info _anim">
+            <div class="user-name _anim">${userName}</div>
+            <div class="user-role _anim">${user.role}</div>
+          </div>
+        </div>
+        <hr class="_anim">
+        <ul class="menu">
+          </li>
+        </ul>`
+
+      const elementsForFadeIn = wrapper.querySelectorAll("._anim")
+
+      // Даем элементам анимацию поочередного появления
+      elementsForFadeIn.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add("fadeIn")
+        }, 150 * index)
+      })
+      wrapper.classList.remove("auth-wrapper")
+    }, 1000)
+
+    // Подключение скрипта управления меню
     const script = document.createElement("script")
-    script.src = "/script/main-script.js"
+    script.src = "/script/menu-script.js"
     document.head.appendChild(script)
   }, 150 * elementsForFadeOut.length)
 
@@ -64,7 +102,6 @@ function transformToWorkspace(name, role, photoPath) {
       el.classList.add("fadeOut")
     }, 150 * index)
   })
-  // alert(`Name: ${name}, Role: ${role}, Photo: ${photoPath}`)
 }
 //----------------------------------------------------
 //------------------------Вход------------------------
@@ -113,7 +150,12 @@ function signIn() {
         return
       }
 
-      transformToWorkspace(response.name, response.role, response.photo)
+      // user.name = response.name
+      user.name = "Ковалев Вадим Алескандрович"
+      user.role = response.role
+      user.photo = response.photo
+
+      transformToWorkspace()
     }
   )
 }
