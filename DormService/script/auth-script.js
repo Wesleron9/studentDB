@@ -82,10 +82,10 @@ function transformToWorkspace() {
             <div class="user-role _anim">${user.role}</div>
           </div>
         </div>
-        <hr class="_anim">
-        <ul class="menu">
-          </li>
-        </ul>`
+        <hr class="_anim">`
+      let menu_ul = document.createElement("ul")
+      menu_ul.classList.add("menu")
+      wrapper.querySelector("hr").insertAdjacentElement("afterend", menu_ul)
 
       const elementsForFadeIn = wrapper.querySelectorAll("._anim")
 
@@ -101,6 +101,7 @@ function transformToWorkspace() {
     // Подключение скрипта управления меню
     const script = document.createElement("script")
     script.src = "/script/menu-script.js"
+    script.async = false
     document.head.appendChild(script)
   }, 150 * elementsForFadeOut.length)
 
@@ -142,6 +143,7 @@ function signIn() {
     return
   }
 
+  lockButton(logBtn)
   // Отправка логина и пароля на сервер
   SendRequest(
     "POST",
@@ -164,6 +166,7 @@ function signIn() {
       user.photo = response.photo
 
       transformToWorkspace()
+      logBtn.classList.remove("unavailable")
     }
   )
 }

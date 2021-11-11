@@ -32,8 +32,9 @@ if ($user == " ") { // Если никто не авторизован
     $result = $mysql->query("SELECT `module`, `module-name`, `icon`, `order` FROM `modules-user` WHERE  `login` = '$user' ORDER BY `order`"); // Запрос к БД какие модули доступны
 
     if ($result->num_rows > 0) { // Если запрос отдал больше 0 строк
-        while ($menu = $result->fetch_assoc()) { // Выбераем записи
-            $arr[$menu['order']] = array("module-name" => $menu['module'], "menu-name" => $menu['module-name'], "path-ico" => $menu['icon']); // Добавляем записи в массив
+        $arr = [];
+        while ($menu_item = $result->fetch_assoc()) { // Выбераем записи
+             array_push($arr, $menu_item); // Добавляем записи в массив
         }
         systemResponse($arr); // Отправляем маcсив на фронт
     } else { // Если запрос не отдал ни одной строки
