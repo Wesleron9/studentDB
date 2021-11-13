@@ -1,4 +1,4 @@
-{
+setTimeout(() => {
   let menuWrapper = document.querySelector(".side-menu .menu")
   console.log(menuWrapper)
   function displayMenu(menu) {
@@ -50,4 +50,4 @@
       displayMenu(menu)
     }
   )
-}
+}, 3000)

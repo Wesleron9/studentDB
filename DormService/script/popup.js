@@ -1,17 +1,17 @@
 function createPopUp(type, text, ...btnHandlers) {
   let body = document.querySelector("body")
 
-  if (document.querySelector("pop-up-wrapper")) {
+  if (document.querySelector(".pop-up-wrapper")) {
     console.error("Error: pop-up already exists!")
     return
   }
 
   switch (type) {
     case "message":
-      body.insertAdjacentHTML(
-        "beforeend",
-        `<div class="pop-up-wrapper">
-        <div class="pop-up">
+      let popUp_wrapper = document.createElement("div")
+      popUp_wrapper.classList.add("pop-up-wrapper")
+
+      popUp_wrapper.innerHTML = `<div class="pop-up">
           <div class="top">
           Сообщение системы
           </div>
@@ -21,12 +21,12 @@ function createPopUp(type, text, ...btnHandlers) {
           <div class="bottom">
             <div id="pop-up-btn1" class="button">ОК</div>
           </div>
-        </div>
       </div>`
-      )
+
+      document.body.insertAdjacentElement("beforeend",popUp_wrapper)
       //Удаляем поп-ап по клику
-      document.querySelector("#pop-up-btn1").addEventListener("click", () => {
-        document.querySelector(".pop-up-wrapper").remove()
+      popUp_wrapper.querySelector("#pop-up-btn1").addEventListener("click", () => {
+        popUp_wrapper.remove()
       })
       break
     
@@ -56,3 +56,8 @@ function createPopUp(type, text, ...btnHandlers) {
         .addEventListener("click", btnHandlers[1])
   }
 }
+
+createPopUp("message", "Какое-то сообщение")
+createPopUp("message", "Какое-то сообщение")
+createPopUp("message", "Какое-то сообщение")
+createPopUp("message", "Какое-то сообщение")
