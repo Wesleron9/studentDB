@@ -68,7 +68,7 @@ function transformToWorkspace() {
           user.name.split(" ")[2].split("")[0]
         }.`
       } catch (err) {
-        console.log("Неправильный у вас какой-то user.name" + err)
+        console.warn("(Не валидный user.name), " + err)
         userName = user.name
       }
 
@@ -96,13 +96,11 @@ function transformToWorkspace() {
         }, 150 * index)
       })
       wrapper.classList.remove("auth-wrapper")
+      // Подключение скрипта управления меню
+      const script = document.createElement("script")
+      script.src = "/script/menu-script.js"
+      document.head.appendChild(script)
     }, 1000)
-
-    // Подключение скрипта управления меню
-    const script = document.createElement("script")
-    script.src = "/script/menu-script.js"
-    script.async = false
-    document.head.appendChild(script)
   }, 150 * elementsForFadeOut.length)
 
   // Даем элементам анимацию поочередного исчезновения

@@ -73,6 +73,7 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .menu-item img {

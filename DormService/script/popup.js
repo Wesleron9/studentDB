@@ -56,8 +56,3 @@ function createPopUp(type, text, ...btnHandlers) {
         .addEventListener("click", btnHandlers[1])
   }
 }
-
-createPopUp("message", "Какое-то сообщение")
-createPopUp("message", "Какое-то сообщение")
-createPopUp("message", "Какое-то сообщение")
-createPopUp("message", "Какое-то сообщение")
