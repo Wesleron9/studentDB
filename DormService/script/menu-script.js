@@ -2,7 +2,7 @@ let menuWrapper = document.querySelector(".side-menu .menu")
 
 function displayMenu(menu) {
   if (!menu) {
-    createPopUp("message", "Ошибка: меню не доступно")
+    createPopUp("message", "Ошибка: меню недоступно")
     return
   }
 
@@ -11,11 +11,20 @@ function displayMenu(menu) {
       menuWrapper.insertAdjacentHTML(
         "beforeend",
         `<li class="menu-item fadeIn">
-      <img src="${menuItem.icon}" alt="">
-      <span>${menuItem["module-name"]}</span>
-    </li>`
+            <img src="${menuItem.icon}" alt="">
+            <span>${menuItem["module-name"]}</span>
+          </li>`
       )
     }, 100 * index)
+
+    setTimeout(() => {
+      document.querySelectorAll(".fadeIn").forEach((el) => {
+        el.classList.remove("fadeIn")
+      })
+      document.querySelectorAll("._anim").forEach((el) => {
+        el.classList.remove("_anim")
+      })
+    }, 400)
   })
 }
 
