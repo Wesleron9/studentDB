@@ -82,7 +82,12 @@ function transformToWorkspace() {
             <div class="user-role _anim">${user.role}</div>
           </div>
         </div>
-        <hr class="_anim">`
+        <hr class="_anim">
+        <div class="preloader">
+        <div class="dot d1"></div>
+        <div class="dot d2"></div>
+        <div class="dot d3"></div>
+        </div>`
       let menu_ul = document.createElement("ul")
       menu_ul.classList.add("menu")
       wrapper.querySelector("hr").insertAdjacentElement("afterend", menu_ul)

@@ -43,7 +43,7 @@ input[type="tel"]::-webkit-input-placeholder {
 }
 
 input[type="text"]::-moz-placeholder,
-input[type="password"]::-moz-placeholder
+input[type="password"]::-moz-placeholder,
 input[type="tel"]::-moz-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
@@ -61,8 +61,8 @@ input[type="tel"]:-moz-placeholder {
 }
 
 input[type="text"]:-ms-input-placeholder,
-input[type="password"]:-ms-input-placeholder ,
-input[type="tel"]:-ms-input-placeholder{
+input[type="password"]:-ms-input-placeholder,
+input[type="tel"]:-ms-input-placeholder {
   color: #8d939c;
   font-size: 1.5rem;
   opacity: 1;
@@ -247,4 +247,47 @@ input[type="tel"].wrongInput {
   animation-duration: 0.3s;
   animation-timing-function: ease;
   animation-fill-mode: both;
+}
+
+/* Preloader */
+.preloader {
+  position: relative;
+  margin: 200px 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  position: absolute;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+  background-color: white;
+  animation: loader 0.5s linear infinite alternate;
+}
+
+.d1 {
+  left: -18px;
+  animation-delay: 0.2s;
+}
+
+.d2 {
+  left: 0px;
+  animation-delay: 0.4s;
+}
+
+.d3 {
+  left: 18px;
+  animation-delay: 0.6s;
+}
+
+@keyframes loader {
+  from {
+    top: 0px;
+    background-color: white;
+  }
+  to {
+    top: -10px;
+    background-color: #4c5b98;
+  }
 }

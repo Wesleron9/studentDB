@@ -6,6 +6,8 @@ function displayMenu(menu) {
     return
   }
 
+  document.querySelector(".preloader").remove()
+
   menu.forEach((menuItem, index) => {
     setTimeout(() => {
       menuWrapper.insertAdjacentHTML(
