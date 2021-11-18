@@ -6,19 +6,21 @@ function displayMenu(menu) {
     return
   }
 
+  // Удаляем прелоадер
   document.querySelector(".preloader").remove()
-
+  // Плавно выводим все пункты меню
   menu.forEach((menuItem, index) => {
     setTimeout(() => {
       menuWrapper.insertAdjacentHTML(
         "beforeend",
-        `<li class="menu-item fadeIn">
+        `<li class="menu-item fadeIn" >
             <img src="${menuItem.icon}" alt="">
             <span>${menuItem["module-name"]}</span>
           </li>`
       )
     }, 100 * index)
 
+    // Удаляем ненужные классы после анимации
     setTimeout(() => {
       document.querySelectorAll(".fadeIn").forEach((el) => {
         el.classList.remove("fadeIn")
@@ -62,3 +64,11 @@ SendRequest(
     displayMenu(menu)
   }
 )
+
+let o = {
+  icon: "/mage/icons/menu-icons/gear.png",
+  css: "/modules/test_module/style.css",
+  html: "/modules/test_module/module.html",
+  js: "/modules/test_module/script.js",
+  php: "/modules/test_module/handler.php",
+}

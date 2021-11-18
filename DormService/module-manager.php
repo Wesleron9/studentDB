@@ -28,31 +28,50 @@ if ($user == " ") { // Если никто не авторизован
     systemMessage("Ошибка авторизации, попробуйте снова");
     exit(); // Завершаем скрипт
 } elseif ($task == "menu") { // Запрос меню
-    $result = $mysql->query("SELECT `module`, `module-name`, `icon`, `order` FROM `modules-user` WHERE  `login` = '$user' ORDER BY `order`"); // Запрос к БД какие модули доступны
 
-    if ($result->num_rows > 0) { // Если запрос отдал больше 0 строк
-        $arr = [];
-        while ($menu_item = $result->fetch_assoc()) { // Выбераем записи
-             array_push($arr, $menu_item); // Добавляем записи в массив
+
+
+
+
+
+
+    $available_modules = $mysql->query("SELECT `module` FROM `modules-user` WHERE  `login` = '$user'"); // Запрос к БД какие модули доступны
+
+    if ($available_modules->num_rows > 0) { // Если запрос отдал больше 0 строк
+        $response = [];
+
+        while ($module = $available_modules->fetch_assoc()) { // Выбераем записи
+            $module = $mysql->query("SELECT `module`, `module_text`, `sources`, `order` FROM `modules` WHERE  `module` = '$module[module]'"); // Получаем модуль
+            array_push($response, $module); // Добавляем записи в массив
         }
-        systemResponse($arr); // Отправляем маcсив на фронт
+        systemResponse($response); // Отправляем маcсив на фронт
     } else { // Если запрос не отдал ни одной строки
         systemMessage("Не один пункт меню не доступен, обратитесь к администратору");
     }
 
     $mysql->close(); // Закрываем соеденение с БД
     exit(); // Завершаем скрипт
+
+
+
+
+
+
+
 } elseif ($task == "module") { // Запрос модуля
 
-    $result = $mysql->query("SELECT `module`FROM `mudels-user` WHERE  `login` = '$user' and `module` = '$module'"); // Проверяем доступен ли модуль пользователю
+
+
+
+    $result = $mysql->query("SELECT `module` FROM `modules-user` WHERE  `login` = '$user' and `module` = '$module'"); // Проверяем доступен ли модуль пользователю
 
     if ($result->num_rows > 0) { // Если доступен
 
         $result = $mysql->query("SELECT `css`, `java`, `html`, `php` FROM `mudels` WHERE  `mudels` = '$module'"); // Находим пути до модуля
         $path_modules = $result->fetch_assoc(); // Выбераем записи
 
-        $arr = ["css" => $path_modules['css'], "java" => $path_modules['java'], "html" => $path_modules['html'], "php" => $path_modules['php']]; // Добавляем записи в массив
-        systemResponse($arr); // Отправляем маcсив на фронт
+        $response = ["css" => $path_modules['css'], "java" => $path_modules['java'], "html" => $path_modules['html'], "php" => $path_modules['php']]; // Добавляем записи в массив
+        systemResponse($response); // Отправляем маcсив на фронт
 
 
     } else { // Если недоступен
@@ -60,11 +79,16 @@ if ($user == " ") { // Если никто не авторизован
     }
     $mysql->close(); // Закрываем соеденение с БД
     exit(); // Завершаем скрипт
+
+
+
+
+
 } elseif ($task == "function") { // Запрос доступа к функции
     $result = $mysql->query("SELECT `function` FROM `$module` WHERE  `login` = '$user' and `function` = '$function'"); // Проверяем доступна ли функция пользователю
     if ($result->num_rows > 0) { // Если доступна
-        $arr = [true];
-        systemResponse($arr); // Отправляем маcсив на фронт
+        $response = [true];
+        systemResponse($response); // Отправляем маcсив на фронт
     } else {
         systemMessage("Недостаточно прав для использования этой функции, обратитесь к администратору");
     }

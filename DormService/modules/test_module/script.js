@@ -1,0 +1,1 @@
+document.querySelector(".js-output").innerText = "LOL, its work!"

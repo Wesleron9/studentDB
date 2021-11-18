@@ -1,12 +1,20 @@
 <?php
-//Добавляем соль к паролю и хешируем
-$password = md5("test123" . "matveeva");
-
 //Подключаемся к БД
 require "DB-Config.php";
+require "response.php";
 
-//Вносим данные о регистрации в таблицу не подтвержденных ползователей
-$mysql->query("INSERT INTO `users` (`name`, `login`, `pass`, `role`, `photo`) VALUES ('TEST USER', 'test', '$password', 'Администратор', '/resources/user-photo/avatar2.jpg')");
+$available_modules = $mysql->query("SELECT `module` FROM `modules-user` WHERE  `login` = 'test'"); // Запрос к БД какие модули доступны
 
-//Закрываем соеденение с БД
-$mysql->close();
+if ($available_modules->num_rows > 0) { // Если запрос отдал больше 0 строк
+
+  while ($module = $available_modules->fetch_assoc()) { // Выбераем записи
+    $module_name = $module["module"];
+    array_push($response, $mysql->query("SELECT `module`, `module_text`, `sources`, `order` FROM `modules` WHERE  `module` = '$module_name'")); // Добавляем записи в массив
+  }
+  systemResponse($response); // Отправляем маcсив на фронт
+} else { // Если запрос не отдал ни одной строки
+  systemMessage("Не один пункт меню не доступен, обратитесь к администратору");
+}
+
+$mysql->close(); // Закрываем соеденение с БД
+exit(); // Завершаем скрипт
