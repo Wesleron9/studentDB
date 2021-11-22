@@ -313,7 +313,6 @@ function signUp() {
       name: name,
       email: email,
       tel: tel,
-      login: login,
       password: password,
     },
     (response) => {
