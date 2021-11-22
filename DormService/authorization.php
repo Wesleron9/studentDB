@@ -50,9 +50,8 @@ if (count($user_temp) != 0) {
     exit();
 }
 
-//После успешной авторизации добавляем логин и ключ в сессию
+//После успешной авторизации добавляем логин в сессию
 $_SESSION['user name'] = $login;
-$_SESSION["key"] = $user["key"];
 
 //Узнаем роль пользователя
 $role_result = $mysql->query("SELECT `role`, `role id` FROM `role` WHERE  `role id` = $user[role]");
