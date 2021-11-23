@@ -53,8 +53,8 @@ elseif (strlen($tel) != 12){
 else{
     echo $tel;
 }
-
-if (strpos($email, '@') === false || strpos($email, '.') === false) {
+$email_val = preg_split('@', $email);
+if (strpos($email, '@') === false || strpos($email_val[1], '.') === false) {
     systemMessage("Email введён неверно.");
 }
 //Проверяем есть ли пользователь с такой почтой
@@ -75,12 +75,28 @@ elseif (mb_strlen($name) < 3 || mb_strlen($name) > 50) {
     exit();
 }
 elseif (count($validation_email) != 0) {
-    systemMessage("Пользователь с таким Email уже зарегестрирован!");
+    systemMessage("Email ".'"'.$email.'"'." уже зарегестрирован!");
     $mysql->close();
     exit();
 }
 elseif (count($validation_tel) != 0){
-    systemMessage("Пользователь с таким номером телефона уже зарегестрирован!");
+    systemMessage("Номер ".'"'.$tel.'"'." уже зарегестрирован!");
+    $mysql->close();
+    exit();
+}
+//Проверяем есть ли пользователь с такой почтой в ожидающих подтверждение
+$validation_email = $mysql->query("SELECT `email` FROM `temp-users` WHERE  `email` = '$email'");
+$validation_email = $validation_email->fetch_assoc();
+//Проверяем есть ли пользователь с таким номером телефона в ожидающих подтверждение
+$validation_tel = $mysql->query("SELECT `tel` FROM `temp-users` WHERE  `tel` = '$tel'");
+$validation_tel = $validation_tel->fetch_assoc();
+if (count($validation_email) != 0) {
+    systemMessage("Email " . '"' . $email . '"' . " уже зарегестрирован!");
+    $mysql->close();
+    exit();
+}
+elseif (count($validation_tel) != 0) {
+    systemMessage("Номер " . '"' . $tel . '"' . " уже зарегестрирован!");
     $mysql->close();
     exit();
 }
