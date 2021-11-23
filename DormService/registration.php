@@ -105,6 +105,7 @@ function forming_login ($table, $num_surname, $num_name, $num_patronymic)
 //  Проверяем есть ли такой логин в БД
     $login_DB_user = $mysql->query("SELECT `login` FROM '$table' WHERE  `login` = '$login'");
     $login_DB_user = $login_DB_user->fetch_assoc();
+    return strtr($login, $login_DB_user);
 }
 // Задаем длину пароля
 $num_surname = 7;
