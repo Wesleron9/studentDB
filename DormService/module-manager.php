@@ -50,15 +50,7 @@ if (!$user) { // Если никто не авторизован
         array_push($response, $mysql->query("SELECT `module`, `module_text`, `module_type`, `inserted_in`, `sources`, `order` FROM `modules` WHERE  `module` = '$module_name'")->fetch_assoc()); // Добавляем записи в массив
     }
 
-
-    // Тут должно быть построение древа меню
-
     systemResponse($response); // Отправляем маcсив на фронт
-
-
-
-
-
 
     $mysql->close(); // Закрываем соеденение с БД
     exit(); // Завершаем скрипт

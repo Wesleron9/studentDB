@@ -6,7 +6,7 @@ $login = filter_var(trim($data->login),
     FILTER_SANITIZE_STRING);
 $modules = filter_var(trim($data->modules),
     FILTER_SANITIZE_STRING);
-if ($_SESSION['user name']<>$login)
+if ($_SESSION['user_name']<>$login)
     echo 'Ошибка авторизации';
     else{
         require "../../DB-Config.php";

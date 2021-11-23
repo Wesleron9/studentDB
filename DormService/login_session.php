@@ -1,7 +1,7 @@
 <?php
 //Стартуем сессию
 session_start();
-$login = $_SESSION['user name'];
+$login = $_SESSION['user_name'];
 //Берём данные пользователя из БД
 $result = $mysql->query("SELECT `name`, `role`, `photo` FROM `users` WHERE  `login` = '$login'");
 $user = $result->fetch_assoc();

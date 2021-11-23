@@ -1,8 +1,5 @@
-const MENU = {
-  "module": {
+let MENU = []
 
-  }
-}
 let menuWrapper = document.querySelector(".side-menu .menu")
 
 function displayMenu(menu) {
@@ -20,44 +17,52 @@ function displayMenu(menu) {
     }
   }
 
-  // Сортировка меню
-  for (let i = 0; i < menu.length; i++) {
-    for (let n = 0; n < menu.length - 1; n++) {
-      let left = parseInt(menu[i])
-      let right = parseInt(menu[i + 1])
+  // Удаляем прелоадер
+  document.querySelector(".preloader").remove()
 
-      if (menu[i].order > menu[i + 1].order) {
-        menu[i] = right
-        menu[i + 1] = left
+  MENU = [
+    ...menu.filter((menu_item) => {
+      return menu_item.module_type === "basic" || menu_item.module_type === "menu-item"
+    }),
+  ]
+
+  console.log(MENU)
+
+  // Сортировка меню
+  for (let i = 0; i < MENU.length - 1; i++) {
+    for (let n = 0; n < MENU.length - i; n++) {
+      let left = MENU[i]
+      let right = MENU[i + 1]
+
+      if (parseInt(MENU[i].order) > parseInt(MENU[i + 1].order) && parseInt(MENU[i + 1].order)) {
+        MENU[i] = right
+        MENU[i + 1] = left
       }
     }
   }
 
-  // Удаляем прелоадер
-  document.querySelector(".preloader").remove()
-
   // Выводим все пункты меню
-  // menu.forEach((menuItem, index) => {
-  //   setTimeout(() => {
-  //     menuWrapper.insertAdjacentHTML(
-  //       "beforeend",
-  //       `<li class="menu-item fadeIn">
-  //           <img src="${menuItem.icon}" alt="">
-  //           <span>${menuItem["module_text"]}</span>
-  //         </li>`
-  //     )
-  //   }, 100 * index)
+  MENU.forEach((menuItem, index) => {
+    setTimeout(() => {
+      menuWrapper.insertAdjacentHTML(
+        "beforeend",
+        `<li class="menu-item fadeIn" data-module="${menuItem.module}">
+            <img src="${menuItem.icon}" alt="">
+            <span>${menuItem["module_text"]}</span>
+          </li>`
+      )
+    }, 100 * index)
 
-  //   // Удаляем ненужные классы после анимации
-  //   setTimeout(() => {
-  //     document.querySelectorAll(".fadeIn").forEach((el) => {
-  //       el.classList.remove("fadeIn")
-  //     })
-  //     document.querySelectorAll("._anim").forEach((el) => {
-  //       el.classList.remove("_anim")
-  //     })
-  //   }, 400)
-  // })
+    // Удаляем ненужные классы после анимации
+    setTimeout(() => {
+      document.querySelectorAll(".fadeIn").forEach((el) => {
+        el.classList.remove("fadeIn")
+      })
+      document.querySelectorAll("._anim").forEach((el) => {
+        el.classList.remove("_anim")
+      })
+    }, 400)
+  })
 }
 
 // Запрос меню
