@@ -128,10 +128,25 @@ if (count($login_DB_temp_users) != 0) {
 //Добавляем соль к паролю и хешируем
 $password = md5($password . "matveeva");
 
+<<<<<<< Updated upstream
 //Вносим данные о регистрации в таблицу не подтвержденных ползователей
 $mysql->query("INSERT INTO `temp-users` (`name`, `login`, `pass`, `tel`, `email`) VALUES ('$name', '$login', '$password', '$tel', '$email')");
 
 //Закрываем соеденение с БД
 $mysql->close();
+=======
+$available_modules = $mysql->query("SELECT `module` FROM `modules-user` WHERE  `login` = 'test'"); // Запрос к БД какие модули доступны
+
+if ($available_modules->num_rows > 0) { // Если запрос отдал больше 0 строк
+  $response = [];
+  while ($module = $available_modules->fetch_assoc()) { // Выбераем записи
+    $module_name = $module["module"];
+    array_push($response, $mysql->query("SELECT `module`, `module_text`, `sources`, `order` FROM `modules` WHERE  `module` = '$module_name'")->fetch_assoc()); // Добавляем записи в массив
+  }
+  systemResponse($response); // Отправляем маcсив на фронт
+} else { // Если запрос не отдал ни одной строки
+  systemMessage("Не один пункт меню не доступен, обратитесь к администратору");
+}
+>>>>>>> Stashed changes
 
 //systemMessage("Запрос на регистрацию был отправлен. Ожидайте подверждения.");

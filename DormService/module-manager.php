@@ -21,43 +21,47 @@ $function = filter_var(
     FILTER_SANITIZE_STRING
 );
 
-$user = $_SESSION['user name']; // Проверяем кто авторизован
+$user = $_SESSION['user_name']; // Проверяем кто авторизован
 
-if ($user == " ") { // Если никто не авторизован
+if (!$user) { // Если никто не авторизован
+    systemMessage("Ошибка авторизации");
+    // Очистить массив $_SESSION полностью
+    session_unset();
 
-    systemMessage("Ошибка авторизации, попробуйте снова");
+    // Удалить временное хранилище (файл сессии) на сервере
+    session_destroy();
+
+    // Принудительное удаление сессионной cookie
+    setcookie(session_name(), session_id(), time() - 3600);
     exit(); // Завершаем скрипт
 } elseif ($task == "menu") { // Запрос меню
-
-
-
-
-
-
-
     $available_modules = $mysql->query("SELECT `module` FROM `modules-user` WHERE  `login` = '$user'"); // Запрос к БД какие модули доступны
 
-    if ($available_modules->num_rows > 0) { // Если запрос отдал больше 0 строк
-        $response = [];
-
-        while ($module = $available_modules->fetch_assoc()) { // Выбераем записи
-            $module = $mysql->query("SELECT `module`, `module_text`, `sources`, `order` FROM `modules` WHERE  `module` = '$module[module]'"); // Получаем модуль
-            array_push($response, $module); // Добавляем записи в массив
-        }
-        systemResponse($response); // Отправляем маcсив на фронт
-    } else { // Если запрос не отдал ни одной строки
+    if ($available_modules->num_rows <= 0) {
         systemMessage("Не один пункт меню не доступен, обратитесь к администратору");
+        $mysql->close(); // Закрываем соеденение с БД
+        exit(); // Завершаем скрипт
     }
+
+    $response = [];
+
+    while ($module = $available_modules->fetch_assoc()) { // Выбераем записи
+        $module_name = $module["module"];
+        array_push($response, $mysql->query("SELECT `module`, `module_text`, `module_type`, `inserted_in`, `sources`, `order` FROM `modules` WHERE  `module` = '$module_name'")->fetch_assoc()); // Добавляем записи в массив
+    }
+
+
+    // Тут должно быть построение древа меню
+
+    systemResponse($response); // Отправляем маcсив на фронт
+
+
+
+
+
 
     $mysql->close(); // Закрываем соеденение с БД
     exit(); // Завершаем скрипт
-
-
-
-
-
-
-
 } elseif ($task == "module") { // Запрос модуля
 
 
