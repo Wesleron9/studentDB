@@ -67,7 +67,7 @@ elseif (count($validation_tel) != 0){
     exit();
 }
 // Функция создания логина
-function forminglogin ($table, $num_surname, $num_name, $num_patronymic)
+function forminglogin ($num_surname, $num_name, $num_patronymic)
 {
     global $name, $mysql, $login_DB_user;
     // Трансформируем ФИО в транслит
@@ -85,24 +85,27 @@ function forminglogin ($table, $num_surname, $num_name, $num_patronymic)
     $login = $login_surname . $login_name . $login_patronymic;
     $login = strtolower($login);
 //  Проверяем есть ли такой логин в БД
-    $login_DB_user = $mysql->query("SELECT `login` FROM '$table' WHERE  `login` = '$login'");
-    $login_DB_user = $login_DB_user->fetch_assoc();
-    $login_DB_user = count($login_DB_user);
-    return strtr($login, $login_DB_user);
+    return strtr($login);
 }
 // Задаем длину пароля
 $num_surname = 7;
 $num_name = 1;
 $num_patronymic = 1;
 // Формируем логин
-forming_login('users', $num_surname, $num_name, $num_patronymic,);
+forming_login($num_surname, $num_name, $num_patronymic,);
+$login_DB_user = $mysql->query("SELECT `login` FROM `users` WHERE  `login` = '$login'");
+$login_DB_user = $login_DB_user->fetch_assoc();
 if (count($login_DB_user) != 0) { // Если такой логин уже есть в таблице пользователей
     while (count($login_DB_user) != 0) { // Добавляем 1 букву фамилии
         $num_surname++;
         forming_login('users', $num_surname, $num_name, $num_patronymic,);
+        $login_DB_user = $mysql->query("SELECT `login` FROM `users` WHERE  `login` = '$login'");
+        $login_DB_user = $login_DB_user->fetch_assoc();
         if (count($login_DB_user) != 0) { // Если есть и такой то одну букву к имени
             $num_name++;
             forming_login('users', $num_surname, $num_name, $num_patronymic,);
+            $login_DB_user = $mysql->query("SELECT `login` FROM `users` WHERE  `login` = '$login'");
+            $login_DB_user = $login_DB_user->fetch_assoc();
             if (count($login_DB_user) != 0) { // Если есть и такой то одну букву к отчеству
                 $num_patronymic++;
                 forming_login('users', $num_surname, $num_name, $num_patronymic,);
@@ -114,15 +117,21 @@ if (count($login_DB_user) != 0) { // Если такой логин уже ес�
 $login_DB_temp_users = $mysql->query("SELECT `login` FROM `temp-users` WHERE  `login` = '$login'");
 $login_DB_temp_users = $login_DB_temp_users->fetch_assoc();
 if (count($login_DB_temp_users) != 0) { // Если есть
-    while (count($login_DB_user) != 0) { // Добавляем 1 букву фамилии
+    while (count($login_DB_temp_users) != 0) { // Добавляем 1 букву фамилии
         $num_surname ++;
         forming_login('temp-users', $num_surname, $num_name, $num_patronymic,);
-        if (count($login_DB_user) != 0) { // Если есть и такой то одну букву к имени
+        $login_DB_temp_users = $mysql->query("SELECT `login` FROM `temp-users` WHERE  `login` = '$login'");
+        $login_DB_temp_users = $login_DB_temp_users->fetch_assoc();
+        if (count($login_DB_temp_users) != 0) { // Если есть и такой то одну букву к имени
             $num_name++;
             forming_login('temp-users', $num_surname, $num_name, $num_patronymic,);
-            if (count($login_DB_user) != 0) { // Если есть и такой то одну букву к отчеству
+            $login_DB_temp_users = $mysql->query("SELECT `login` FROM `temp-users` WHERE  `login` = '$login'");
+            $login_DB_temp_users = $login_DB_temp_users->fetch_assoc();
+            if (count($login_DB_temp_users) != 0) { // Если есть и такой то одну букву к отчеству
                 $num_patronymic++;
                 forming_login('temp-users', $num_surname, $num_name, $num_patronymic,);
+                $login_DB_temp_users = $mysql->query("SELECT `login` FROM `temp-users` WHERE  `login` = '$login'");
+                $login_DB_temp_users = $login_DB_temp_users->fetch_assoc();
             }
         }
     }
