@@ -1,53 +1,68 @@
-let MENU = []
+let MENU // Все доступные пункты меню и подменю
+let mainMenu // Главное меню
 
 let menuWrapper = document.querySelector(".side-menu .menu")
 
-function displayMenu(menu) {
+function processMenu(menu) {
   if (!menu) {
     createPopUp("message", "Ошибка: меню недоступно")
     return
   }
 
+  MENU = menu
+
   // Очистка массива меню на случай null внутри
-  for (let i = 0; i < menu.length; i++) {
-    if (menu[i] === null) {
+  for (let i = 0; i < MENU.length; i++) {
+    if (MENU[i] === null) {
       console.warn("Пустой пункт меню!")
-      menu.splice(i, 1)
+      MENU.splice(i, 1)
       i = -1
     }
   }
 
-  // Удаляем прелоадер
-  document.querySelector(".preloader").remove()
+  // Парсим ресурсы модуля
+  MENU.forEach(menu_item => {
+    menu_item.sources = JSON.parse(menu_item.sources)
+  });
 
-  MENU = [
-    ...menu.filter((menu_item) => {
-      return menu_item.module_type === "basic" || menu_item.module_type === "menu-item"
+  // Получение списка главного меню
+  mainMenu = [
+    ...MENU.filter((menu_item) => {
+      return (
+        menu_item.module_type === "basic" ||
+        menu_item.module_type === "menu-item"
+      )
     }),
   ]
 
-  console.log(MENU)
+  // Сортировка главного меню
+  for (let i = 0; i < mainMenu.length - 1; i++) {
+    for (let n = 0; n < mainMenu.length - i; n++) {
+      let left = mainMenu[i]
+      let right = mainMenu[i + 1]
 
-  // Сортировка меню
-  for (let i = 0; i < MENU.length - 1; i++) {
-    for (let n = 0; n < MENU.length - i; n++) {
-      let left = MENU[i]
-      let right = MENU[i + 1]
-
-      if (parseInt(MENU[i].order) > parseInt(MENU[i + 1].order) && parseInt(MENU[i + 1].order)) {
-        MENU[i] = right
-        MENU[i + 1] = left
+      if (
+        parseInt(mainMenu[i].order) > parseInt(mainMenu[i + 1].order) &&
+        parseInt(mainMenu[i + 1].order)
+      ) {
+        mainMenu[i] = right
+        mainMenu[i + 1] = left
       }
     }
   }
+}
+
+function displayMainMenu() {
+  // Удаляем прелоадер из меню
+  document.querySelector(".preloader").remove()
 
   // Выводим все пункты меню
-  MENU.forEach((menuItem, index) => {
+  mainMenu.forEach((menuItem, index) => {
     setTimeout(() => {
       menuWrapper.insertAdjacentHTML(
         "beforeend",
         `<li class="menu-item fadeIn" data-module="${menuItem.module}">
-            <img src="${menuItem.icon}" alt="">
+            <img src="${menuItem.sources.icon}" alt="">
             <span>${menuItem["module_text"]}</span>
           </li>`
       )
@@ -80,6 +95,10 @@ SendRequest(
       return
     }
 
-    displayMenu(response)
+    // Передаем меню в обработчик
+    processMenu(response)
+
+    // Отображаем главное меню
+    displayMainMenu()
   }
 )

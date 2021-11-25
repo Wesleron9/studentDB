@@ -1,4 +1,5 @@
 .side-menu {
+  flex-shrink: 0;
   color: #eaeaea;
   width: 250px;
   height: 100vh;
@@ -74,7 +75,7 @@
 }
 
 .menu-item.current {
-  background-color: #4C5B98;
+  background-color: #4c5b98;
 }
 
 .menu-item img {
@@ -92,3 +93,29 @@
 .side-menu ._anim {
   opacity: 0;
 }
+
+.main {
+  width: calc(100vw - 250px);
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.sub-menu {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.submenu-item {
+  background-color: #545D6D;
+  width: 200px;
+  height: 100px;
+  margin: 20px;
+  padding: 10px;
+}
+.submenu-title {
+  font-size: 1.2rem;
+}
+.submenu-description {
+}
+
