@@ -21,9 +21,9 @@ function processMenu(menu) {
   }
 
   // Парсим ресурсы модуля
-  MENU.forEach(menu_item => {
+  MENU.forEach((menu_item) => {
     menu_item.sources = JSON.parse(menu_item.sources)
-  });
+  })
 
   // Получение списка главного меню
   mainMenu = [
@@ -54,7 +54,7 @@ function processMenu(menu) {
 
 function displayMainMenu() {
   // Удаляем прелоадер из меню
-  document.querySelector(".preloader").remove()
+  document.querySelector(".side-menu .preloader").remove()
 
   // Выводим все пункты меню
   mainMenu.forEach((menuItem, index) => {
@@ -68,6 +68,35 @@ function displayMainMenu() {
       )
     }, 100 * index)
 
+    // Обработка клика по пункту в главном меню
+    menuWrapper.addEventListener("click", (event) => {
+      let li = event.target.closest("li")
+
+      if (!li) {
+        return
+      }
+
+      // Получаем имя модуля, котрому принадлежит этот пункт меню
+      let type = li.dataset.module
+
+      // Находим модуль, по которому кликнули
+      let module = MENU.find((menu_item) => menu_item.module === type)
+
+      if (!module) {
+        createPopUp("message", "Модуль не найден")
+        console.error("Модуль не найден")
+      }
+
+      if (module.module_type === "basic") {
+        getModule(module.module)
+      } else if (module.module_type === "menu-item") {
+        displaySubmenuFor(module.module)
+      } else {
+        createPopUp("message", "Неправильный тип модуля." + module.module)
+        console.error("Неправильный тип модуля." + module.module)
+      }
+    })
+
     // Удаляем ненужные классы после анимации
     setTimeout(() => {
       document.querySelectorAll(".fadeIn").forEach((el) => {
@@ -79,6 +108,14 @@ function displayMainMenu() {
     }, 400)
   })
 }
+
+function getModule(module) {
+  SendRequest("GET", module.sources.html, "", (response) => {
+    console.log(response)
+  })
+}
+
+function displaySubmenuFor(module) {}
 
 // Запрос меню
 SendRequest(

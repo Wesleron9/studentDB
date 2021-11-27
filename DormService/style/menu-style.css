@@ -29,6 +29,7 @@
 }
 
 .user-photo {
+  user-select: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,6 +42,7 @@
 
 .user-photo img {
   width: 45px;
+  user-select: none;
 }
 
 .user-info {
@@ -59,6 +61,7 @@
 .menu {
   list-style: none;
   padding: 0;
+  user-select: none;
 }
 
 .menu-item {
