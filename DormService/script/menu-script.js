@@ -1,6 +1,5 @@
 let MENU // Все доступные пункты меню и подменю
 let mainMenu // Главное меню
-console.log("111")
 
 const menuWrapper = document.querySelector(".side-menu .menu")
 const mainWrapper = document.querySelector(".main")
@@ -119,17 +118,16 @@ function displayMainMenu() {
 function displayModule(module) {
   // Очистка окна
   mainWrapper.innerHTML = ""
-  console.log(mainWrapper)
 
   // Делаем запрос разметки и вставляем ее после получения
   SendRequest("GET", module.sources.html, "", (response) => {
     mainWrapper.insertAdjacentHTML("beforeend", response)
+    
+    // Подключение скрипта модуля
+    const script = document.createElement("script")
+    script.src = module.sources.js
+    mainWrapper.insertAdjacentElement("afterbegin", script)
   })
-
-  // Подключение скрипта модуля
-  const script = document.createElement("script")
-  script.src = module.sources.js
-  mainWrapper.insertAdjacentElement("afterbegin", script)
 
   // Подключение стилей модуля
   const link = document.createElement("link")
@@ -139,9 +137,10 @@ function displayModule(module) {
 }
 
 function displaySubmenuFor(module) {
-  return module
+  // Находим модули, которые вставлены в текущий
+  let modules = MENU.filter((menu_item) => menu_item.inserted_in === module.module)
+  console.log(modules)
 }
-console.log("222")
 
 // Запрос меню
 SendRequest(
@@ -165,4 +164,3 @@ SendRequest(
     displayMainMenu()
   }
 )
-console.log("333")
