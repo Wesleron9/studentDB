@@ -1,7 +1,9 @@
 let MENU // Все доступные пункты меню и подменю
 let mainMenu // Главное меню
+console.log("111")
 
-let menuWrapper = document.querySelector(".side-menu .menu")
+const menuWrapper = document.querySelector(".side-menu .menu")
+const mainWrapper = document.querySelector(".main")
 
 function processMenu(menu) {
   if (!menu) {
@@ -67,55 +69,79 @@ function displayMainMenu() {
           </li>`
       )
     }, 100 * index)
+  })
 
-    // Обработка клика по пункту в главном меню
-    menuWrapper.addEventListener("click", (event) => {
-      let li = event.target.closest("li")
+  // Обработка клика по пункту в главном меню
+  menuWrapper.addEventListener("click", (event) => {
+    let li = event.target.closest("li")
 
-      if (!li) {
-        return
-      }
+    if (!li) {
+      return
+    }
 
-      // Получаем имя модуля, котрому принадлежит этот пункт меню
-      let type = li.dataset.module
+    // Получаем имя модуля, котрому принадлежит этот пункт меню
+    let type = li.dataset.module
 
-      // Находим модуль, по которому кликнули
-      let module = MENU.find((menu_item) => menu_item.module === type)
+    // Находим модуль, по которому кликнули
+    let module = MENU.find((menu_item) => menu_item.module === type)
 
-      if (!module) {
-        createPopUp("message", "Модуль не найден")
-        console.error("Модуль не найден")
-      }
+    // Если модуль не найден
+    if (!module) {
+      createPopUp("message", "Модуль не найден")
+      console.error("Модуль не найден")
+      return
+    }
 
-      if (module.module_type === "basic") {
-        getModule(module.module)
-      } else if (module.module_type === "menu-item") {
-        displaySubmenuFor(module.module)
-      } else {
-        createPopUp("message", "Неправильный тип модуля." + module.module)
-        console.error("Неправильный тип модуля." + module.module)
-      }
+    if (module.module_type === "basic") {
+      // Если это "basic" модуль, запрашиваем и выводим на экран
+      displayModule(module)
+    } else if (module.module_type === "menu-item") {
+      // Если это "menu-item" модуль(содержит пункты подменю), то нужно запросить и вывести на экран
+      displaySubmenuFor(module)
+    } else {
+      // Если был передан неверный тип модуля
+      createPopUp("message", "Неправильный тип модуля." + module.module)
+      console.error("Неправильный тип модуля." + module.module)
+    }
+  })
+
+  // Удаляем ненужные классы после анимации
+  setTimeout(() => {
+    document.querySelectorAll(".fadeIn").forEach((el) => {
+      el.classList.remove("fadeIn")
     })
-
-    // Удаляем ненужные классы после анимации
-    setTimeout(() => {
-      document.querySelectorAll(".fadeIn").forEach((el) => {
-        el.classList.remove("fadeIn")
-      })
-      document.querySelectorAll("._anim").forEach((el) => {
-        el.classList.remove("_anim")
-      })
-    }, 400)
-  })
+    document.querySelectorAll("._anim").forEach((el) => {
+      el.classList.remove("_anim")
+    })
+  }, 400)
 }
 
-function getModule(module) {
+function displayModule(module) {
+  // Очистка окна
+  mainWrapper.innerHTML = ""
+  console.log(mainWrapper)
+
+  // Делаем запрос разметки и вставляем ее после получения
   SendRequest("GET", module.sources.html, "", (response) => {
-    console.log(response)
+    mainWrapper.insertAdjacentHTML("beforeend", response)
   })
+
+  // Подключение скрипта модуля
+  const script = document.createElement("script")
+  script.src = module.sources.js
+  mainWrapper.insertAdjacentElement("afterbegin", script)
+
+  // Подключение стилей модуля
+  const link = document.createElement("link")
+  link.rel = "stylesheet"
+  link.href = module.sources.css
+  mainWrapper.insertAdjacentElement("afterbegin", link)
 }
 
-function displaySubmenuFor(module) {}
+function displaySubmenuFor(module) {
+  return module
+}
+console.log("222")
 
 // Запрос меню
 SendRequest(
@@ -139,3 +165,4 @@ SendRequest(
     displayMainMenu()
   }
 )
+console.log("333")

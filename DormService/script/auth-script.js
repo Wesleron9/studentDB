@@ -1,10 +1,11 @@
+setScreenTabs()
+
 const user = {
   name: "",
   role: "",
   photo: "",
 }
 
-setScreenTabs()
 
 // Функция для контроля перехода по элементам с помощью 'TAB'
 function setScreenTabs() {
@@ -109,6 +110,7 @@ function transformToWorkspace() {
         }, 150 * index)
       })
       wrapper.classList.remove("auth-wrapper")
+      
       // Подключение скрипта управления меню
       const script = document.createElement("script")
       script.src = "/script/menu-script.js"
@@ -177,7 +179,6 @@ function signIn() {
       user.photo = response.photo
 
       transformToWorkspace()
-      logBtn.classList.remove("unavailable")
     }
   )
 }
