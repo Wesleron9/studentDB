@@ -59,14 +59,7 @@ function transformToWorkspace() {
   // После анимации исчезновения последнего элемента превращаем wrapper в боковое меню и заменяем содержимое
   setTimeout(() => {
     wrapper.classList.add("side-menu")
-    wrapper.insertAdjacentHTML("afterend", `<div class="main"><div class="submenu-item">
-    <span class="submenu-title">Студенты</span>
-    <p class="submenu-description">Модуль для работы с записями студентов</p>
-  </div>
-  <div class="submenu-item">
-    <span class="submenu-title">Студенты</span>
-    <p class="submenu-description">Модуль для работы с записями студентов</p>
-  </div></div>`)
+    wrapper.insertAdjacentHTML("afterend", `<div class="main"></div>`)
 
     // После анимации превращения в меню
     setTimeout(() => {

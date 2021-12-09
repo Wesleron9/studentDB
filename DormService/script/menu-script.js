@@ -78,11 +78,10 @@ function displayMainMenu() {
       return
     }
 
-    // Получаем имя модуля, котрому принадлежит этот пункт меню
-    let type = li.dataset.module
-
     // Находим модуль, по которому кликнули
-    let module = MENU.find((menu_item) => menu_item.module === type)
+    let module = MENU.find(
+      (menu_item) => menu_item.module === li.dataset.module
+    )
 
     // Если модуль не найден
     if (!module) {
@@ -141,18 +140,52 @@ function displaySubmenuFor(module) {
   let modules = MENU.filter(
     (menu_item) => menu_item.inserted_in === module.module
   )
+
   mainWrapper.innerHTML = ""
+
   modules.forEach((menu_item) => {
     mainWrapper.insertAdjacentHTML(
       "beforeend",
       `
     <div class="submenu-item" data-module="${menu_item.module}">
-    <span class="submenu-title">${menu_item.module_text}</span>
-    <p class="submenu-description">${module.description}</p>
-  </div>
+      <span class="submenu-title">${menu_item.module_text}</span>
+      <p class="submenu-description">${module.description}</p>
+    </div>
     `
     )
   })
+
+  function clickHandler(event) {
+    let div = event.target.closest("div.submenu-item")
+
+    // Если кликнули не по элементу подменю
+    if (!div) {
+      return
+    }
+
+    // Находим модуль, по которому кликнули
+    let module = MENU.find(
+      (menu_item) => menu_item.module === div.dataset.module
+    )
+
+    // Если модуль не найден
+    if (!module) {
+      createPopUp("message", "Модуль не найден")
+      console.error("Модуль не найден")
+      return
+    }
+
+    if (
+      MENU.filter((menu_item) => menu_item.inserted_in === module.module)
+        .length > 0
+    ) {
+      displaySubmenuFor(module)
+    } else {
+      displayModule(module)
+    }
+  }
+
+  mainWrapper.addEventListener("click", clickHandler, { once: true })
 }
 
 // Запрос меню
