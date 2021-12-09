@@ -110,9 +110,8 @@
 }
 
 .submenu-item {
+  display: inline-block;
   background-color: #545D6D;
-  width: 200px;
-  height: 100px;
   margin: 20px;
   padding: 10px;
 }

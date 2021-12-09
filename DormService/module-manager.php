@@ -47,7 +47,7 @@ if (!$user) { // Если никто не авторизован
 
     while ($module = $available_modules->fetch_assoc()) { // Выбераем записи
         $module_name = $module["module"];
-        array_push($response, $mysql->query("SELECT `module`, `module_text`, `module_type`, `inserted_in`, `sources`, `order` FROM `modules` WHERE  `module` = '$module_name'")->fetch_assoc()); // Добавляем записи в массив
+        array_push($response, $mysql->query("SELECT `module`, `description`, `module_text`, `module_type`, `inserted_in`, `sources`, `order` FROM `modules` WHERE  `module` = '$module_name'")->fetch_assoc()); // Добавляем записи в массив
     }
 
     systemResponse($response); // Отправляем маcсив на фронт

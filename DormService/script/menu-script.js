@@ -122,7 +122,7 @@ function displayModule(module) {
   // Делаем запрос разметки и вставляем ее после получения
   SendRequest("GET", module.sources.html, "", (response) => {
     mainWrapper.insertAdjacentHTML("beforeend", response)
-    
+
     // Подключение скрипта модуля
     const script = document.createElement("script")
     script.src = module.sources.js
@@ -138,8 +138,21 @@ function displayModule(module) {
 
 function displaySubmenuFor(module) {
   // Находим модули, которые вставлены в текущий
-  let modules = MENU.filter((menu_item) => menu_item.inserted_in === module.module)
-  console.log(modules)
+  let modules = MENU.filter(
+    (menu_item) => menu_item.inserted_in === module.module
+  )
+  mainWrapper.innerHTML = ""
+  modules.forEach((menu_item) => {
+    mainWrapper.insertAdjacentHTML(
+      "beforeend",
+      `
+    <div class="submenu-item" data-module="${menu_item.module}">
+    <span class="submenu-title">${menu_item.module_text}</span>
+    <p class="submenu-description">${module.description}</p>
+  </div>
+    `
+    )
+  })
 }
 
 // Запрос меню
