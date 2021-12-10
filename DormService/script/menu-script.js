@@ -1,8 +1,41 @@
 let MENU // Все доступные пункты меню и подменю
 let mainMenu // Главное меню
-
+let currentMenuItem = {
+  module: "",
+  element: "",
+}
 const menuWrapper = document.querySelector(".side-menu .menu")
 const mainWrapper = document.querySelector(".main")
+
+let menuItemClickHandler = (event) => {
+  let div = event.target.closest("div.submenu-item")
+
+  // Если кликнули не по элементу подменю
+  if (!div) {
+    return
+  }
+
+  // Находим модуль, по которому кликнули
+  let module = MENU.find(
+    (menu_item) => menu_item.module === div.dataset.module
+  )
+
+  // Если модуль не найден
+  if (!module) {
+    createPopUp("message", "Модуль не найден")
+    console.error("Модуль не найден")
+    return
+  }
+
+  if (
+    MENU.filter((menu_item) => menu_item.inserted_in === module.module)
+      .length > 0
+  ) {
+    displaySubmenuFor(module)
+  } else {
+    displayModule(module)
+  }
+}
 
 function processMenu(menu) {
   if (!menu) {
@@ -74,7 +107,7 @@ function displayMainMenu() {
   menuWrapper.addEventListener("click", (event) => {
     let li = event.target.closest("li")
 
-    if (!li) {
+    if (!li || li.classList.contains("current-menu-item")) {
       return
     }
 
@@ -90,11 +123,29 @@ function displayMainMenu() {
       return
     }
 
+    currentMenuItem.element = document.querySelector(
+      ".side-menu .menu .current-menu-item"
+    )
+
+    // Удаляем класс current-menu-item у элемента меню активного ранее
+    if (currentMenuItem.element) {
+      currentMenuItem.element.classList.remove("current-menu-item")
+
+      // Если активный до этого элемент был пунктом меню, который содержал подменю
+      if (currentMenuItem.module.module_type === "menu-item") {
+        mainWrapper.removeEventListener("click", menuItemClickHandler)
+      }
+    }
+
+    currentMenuItem.module = module
+
+    li.classList.add("current-menu-item")
+
     if (module.module_type === "basic") {
       // Если это "basic" модуль, запрашиваем и выводим на экран
       displayModule(module)
     } else if (module.module_type === "menu-item") {
-      // Если это "menu-item" модуль(содержит пункты подменю), то нужно запросить и вывести на экран
+      // Если это "menu-item" модуль(содержит подменю), то нужно вывести на экран подменю
       displaySubmenuFor(module)
     } else {
       // Если был передан неверный тип модуля
@@ -155,37 +206,7 @@ function displaySubmenuFor(module) {
     )
   })
 
-  function clickHandler(event) {
-    let div = event.target.closest("div.submenu-item")
-
-    // Если кликнули не по элементу подменю
-    if (!div) {
-      return
-    }
-
-    // Находим модуль, по которому кликнули
-    let module = MENU.find(
-      (menu_item) => menu_item.module === div.dataset.module
-    )
-
-    // Если модуль не найден
-    if (!module) {
-      createPopUp("message", "Модуль не найден")
-      console.error("Модуль не найден")
-      return
-    }
-
-    if (
-      MENU.filter((menu_item) => menu_item.inserted_in === module.module)
-        .length > 0
-    ) {
-      displaySubmenuFor(module)
-    } else {
-      displayModule(module)
-    }
-  }
-
-  mainWrapper.addEventListener("click", clickHandler, { once: true })
+  mainWrapper.addEventListener("click", menuItemClickHandler, { once: true })
 }
 
 // Запрос меню

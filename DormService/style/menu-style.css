@@ -65,8 +65,11 @@
 }
 
 .menu-item {
-  padding: 3px;
+  border-radius: 4px;
+  max-width: 90%;
+  padding: 4px;
   padding-left: 10px;
+  margin: auto;
   display: flex;
   align-items: center;
   margin-bottom: 5px;
@@ -77,7 +80,7 @@
   background-color: #353e50;
 }
 
-.menu-item.current {
+.menu-item.current-menu-item {
   background-color: #4c5b98;
 }
 
@@ -90,7 +93,7 @@
   word-wrap: break-word;
   display: block;
   font-size: 1.5rem;
-  margin-left: 10px;
+  margin-left: 8px;
 }
 
 .side-menu ._anim {
