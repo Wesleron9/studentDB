@@ -176,8 +176,9 @@ function signIn() {
   )
 }
 
-// Обработка нажатия на кнопку "Войти"
+// Обработка нажатия на кнопку "Войти" или Enter в полях авторизации
 logBtn.addEventListener("click", signIn)
+
 logBtn.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     signIn()

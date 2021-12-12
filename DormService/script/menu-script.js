@@ -1,3 +1,12 @@
+// menu-script 2.0 Start
+// class MENU {
+//   constructor() {
+
+//   }
+// }
+// menu-script 2.0 End
+
+
 let MENU // Все доступные пункты меню и подменю
 let mainMenu // Главное меню
 let currentMenuItem = {
