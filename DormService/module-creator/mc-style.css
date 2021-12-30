@@ -1,5 +1,7 @@
+@import url("/style/colors.css");
+
 body {
-  background-color: #262B35;
+  background-color: var(--main-bg-color1);
   padding: 20px;
 }
 
@@ -32,7 +34,7 @@ select {
   display: block;
   font-size: 1rem;
   font-weight: 700;
-  color: #eaeaea;
+  color: var(--basic-text-color1);
   padding: 0.6em 1.4em 0.5em 0.8em;
   width: 200px;
   border-radius: 3px;

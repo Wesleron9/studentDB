@@ -1,9 +1,11 @@
+@import url("/style/colors.css");
+
 body {
   overflow: hidden;
 }
 
 .auth-wrapper {
-  background-color: #262b35;
+  background-color: var(--main-bg-color1);
   width: 100vw;
 }
 
@@ -24,7 +26,6 @@ body {
 
 .login-screen {
   display: flex;
-  /* background: rgba(0, 255, 13, 0.1); */
   justify-content: center;
   align-items: center;
 }
@@ -72,8 +73,8 @@ body {
   display: flex;
   align-items: center;
   font-size: 1.8rem;
-  color: #eaeaea;
-  fill: #eaeaea;
+  color: var(--auth-btn-back-color);
+  fill: var(--auth-btn-back-color);
   opacity: 1;
   transition: opacity 0.7s;
 }
@@ -84,8 +85,8 @@ body {
 }
 
 .button-back:hover {
-  color: #4c5b98;
-  fill: #4c5b98;
+  color: var(--auth-btn-back-color-hover);
+  fill: var(--auth-btn-back-color-hover);
 }
 
 .button-back svg {

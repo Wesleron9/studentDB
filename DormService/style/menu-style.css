@@ -1,15 +1,17 @@
+@import url("/style/colors.css");
+
 .side-menu {
   flex-shrink: 0;
-  color: #eaeaea;
+  color: var(--basic-text-color1);
   width: 250px;
   height: 100vh;
   overflow: hidden;
-  background-color: #262b35;
+  background-color: var(--main-bg-color1);
   transition: width 1s;
 }
 
 .side-menu hr {
-  background-color: #b9c5ff;
+  background-color: var(main-menu-hr-color);
   height: 2px;
   border: none;
   width: 200px;
@@ -23,7 +25,7 @@
 .user-block {
   padding: 14px 10px;
   width: 100%;
-  background-color: #353e50;
+  background-color: var(--user-block-bg-color);
   display: flex;
   align-items: center;
 }
@@ -77,11 +79,11 @@
 }
 
 .menu-item:hover {
-  background-color: #353e50;
+  background-color: var(--menu-item-color-hover);
 }
 
 .menu-item.current-menu-item {
-  background-color: #4c5b98;
+  background-color: var(--current-menu-item-color);
 }
 
 .menu-item img {
@@ -101,7 +103,7 @@
 }
 
 .main {
-  background-color: #2C394B;
+  background-color: var(--main-bg-color2);
   width: calc(100vw - 250px);
   height: 100vh;
   overflow-x: hidden;
@@ -115,13 +117,11 @@
 
 .submenu-item {
   display: inline-block;
-  background-color: #545D6D;
+  background-color: var(--submenu-item-color);
   margin: 20px;
   padding: 10px;
 }
+
 .submenu-title {
   font-size: 1.2rem;
 }
-.submenu-description {
-}
-

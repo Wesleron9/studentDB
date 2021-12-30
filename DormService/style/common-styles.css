@@ -1,7 +1,8 @@
+@import url("/style/colors.css");
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  /* background-color: #262b35; */
-  color: #eaeaea;
+  color: var(--basic-text-color1);
   margin: 0;
   padding: 0;
   display: flex;
@@ -18,10 +19,10 @@ input[type="tel"] {
   height: 45px;
   border-radius: 3px;
   outline: none;
-  background-color: #353e50;
+  background-color: var(--input-bg-color);
   border: none;
   border-bottom: 2px solid transparent;
-  color: #eaeaea;
+  color: var(--basic-text-color1);
   padding: 0px 5px;
   font-size: 1.5rem;
   margin-bottom: 20px;
@@ -30,14 +31,14 @@ input[type="tel"] {
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="tel"]:focus {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid var(--input-underline-color);
   transition: 0.3s ease;
 }
 
 input[type="text"]::-webkit-input-placeholder,
 input[type="password"]::-webkit-input-placeholder,
 input[type="tel"]::-webkit-input-placeholder {
-  color: #8d939c;
+  color: var(--input-placeholder-color);
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -46,7 +47,7 @@ input[type="tel"]::-webkit-input-placeholder {
 input[type="text"]::-moz-placeholder,
 input[type="password"]::-moz-placeholder,
 input[type="tel"]::-moz-placeholder {
-  color: #8d939c;
+  color: var(--input-placeholder-color);
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -55,7 +56,7 @@ input[type="tel"]::-moz-placeholder {
 input[type="text"]:-moz-placeholder,
 input[type="text"]:-moz-placeholder,
 input[type="tel"]:-moz-placeholder {
-  color: #8d939c;
+  color: var(--input-placeholder-color);
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -64,7 +65,7 @@ input[type="tel"]:-moz-placeholder {
 input[type="text"]:-ms-input-placeholder,
 input[type="password"]:-ms-input-placeholder,
 input[type="tel"]:-ms-input-placeholder {
-  color: #8d939c;
+  color: var(--input-placeholder-color);
   font-size: 1.5rem;
   opacity: 1;
   transition: opacity 0.3s ease;
@@ -101,7 +102,7 @@ input[type="tel"]:focus:-ms-input-placeholder {
 input[type="text"].wrongInput,
 input[type="password"].wrongInput,
 input[type="tel"].wrongInput {
-  border-bottom: 2px solid #eb4c42;
+  border-bottom: 2px solid var(--input-underline-wrong-color);
 }
 
 .button {
@@ -110,43 +111,30 @@ input[type="tel"].wrongInput {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: var(--basic-btn-text-color);
   font-size: 1.5rem;
   width: 162px;
   height: 50px;
-  background-color: #4c5b98;
+  background-color: var(--basic-btn-bg-color);
   transition: background-color 0.1s;
   border: none;
 }
 
 .button:hover {
   cursor: pointer;
-  background-color: #5e6ca5;
+  background-color: var(--basic-btn-bg-color-hover);
 }
 
 .button:active {
-  background-color: #eaeaea;
-  color: #4c5b98;
+  background-color: var(--basic-btn-bg-color-active);
+  color: var(--basic-btn-bg-color);
 }
 
 /* Стили для недоступной кнопки */
 .button.unavailable {
-  background-color: #595d6c;
-  color: #a5a5a5;
-}
-
-.button.unavailable:hover {
+  background-color: var(--basic-btn-bg-color-unavailable);
+  color: var(--basic-btn-text-color-unavailable);
   cursor: not-allowed;
-}
-
-.button.unavailable:focus {
-  background-color: #595d6c;
-  color: #a5a5a5;
-}
-
-.button.unavailable:active {
-  background-color: #595d6c;
-  color: #a5a5a5;
 }
 
 /* Pop-up */

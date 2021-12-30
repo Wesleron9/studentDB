@@ -1,0 +1,33 @@
+:root {
+  /* Основные цвета */
+  --main-bg-color1: #262b35;
+  --main-bg-color2: #202124;
+  
+  /* Инпуты */
+  --input-bg-color: #353e50;
+  --input-placeholder-color: #8d939c;
+  --input-underline-color: #fff;
+  --input-underline-wrong-color: #eb4c42;
+
+  /* Кнопки */
+  --basic-btn-text-color: #fff;
+  --basic-btn-bg-color: #4c5b98;
+  --basic-btn-bg-color-hover: #5e6ca5;
+  --basic-btn-bg-color-active: #eaeaea;
+  --basic-btn-bg-color-unavailable: #595d6c;
+  --basic-btn-text-color-unavailable: #a5a5a5;
+  
+  /* Авторизация */
+  --auth-btn-back-color: #eaeaea;
+  --auth-btn-back-color-hover: #4c5b98;
+
+  /* Сайдбар */
+  --current-menu-item-color: #4c5b98;
+  --menu-item-color-hover: #353e50;
+  --user-block-bg-color: #353e50;
+  --main-menu-hr-color: #b9c5ff;
+  --basic-text-color1: #eaeaea;
+
+  /* Подменю */
+  --submenu-item-color: #545d6d;
+}
