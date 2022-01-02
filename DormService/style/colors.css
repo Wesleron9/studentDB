@@ -30,4 +30,10 @@
 
   /* Подменю */
   --submenu-item-color: #545d6d;
+
+  /* Pop-up */
+  --pop-up-top-bar-bg-color: #272e3b;
+  --pop-up-main-bg-color: #353e50;
+  --pop-up-bottom-bar-bg-color: #272e3b;
+  
 }

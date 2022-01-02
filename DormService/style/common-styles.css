@@ -154,14 +154,14 @@ input[type="tel"].wrongInput {
   box-shadow: 0px 0px 17px 5px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-flow: column;
-  background-color: #353e50;
+  background-color: var(--pop-up-main-bg-color);
   width: 30%;
   border-radius: 3px;
   overflow: hidden;
 }
 
 .pop-up .top {
-  background-color: #272e3b;
+  background-color: var(--pop-up-top-bar-bg-color);
   height: 20px;
   padding: 10px 10px;
   display: flex;
@@ -176,7 +176,7 @@ input[type="tel"].wrongInput {
   flex-wrap: wrap;
   display: flex;
   justify-content: flex-end;
-  background-color: #272e3b;
+  background-color: var(--pop-up-bottom-bar-bg-color);
 }
 
 .pop-up .bottom .button {
