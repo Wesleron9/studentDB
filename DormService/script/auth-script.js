@@ -6,7 +6,6 @@ const user = {
   photo: "",
 }
 
-
 // Функция для контроля перехода по элементам с помощью 'TAB'
 function setScreenTabs() {
   const loginElements = [
@@ -50,9 +49,6 @@ function lockButton(button) {
 function transformToWorkspace() {
   const wrapper = document.querySelector(".auth-wrapper")
 
-  //Удаление окна регистрации
-  wrapper.querySelector(".reg-screen").remove()
-
   // Сбор элементов для анимации исчезновения
   const elementsForFadeOut = wrapper.querySelectorAll("._anim")
 
@@ -63,7 +59,6 @@ function transformToWorkspace() {
 
     // После анимации превращения в меню
     setTimeout(() => {
-      // Позже нужно заменить регуляркой!!! это затыыычка
       let userName
       try {
         userName = `${user.name.split(" ")[0]} ${user.name.split(" ")[1]} ${
@@ -74,7 +69,9 @@ function transformToWorkspace() {
         userName = user.name
       }
 
-      wrapper.innerHTML = `<img class="logo _anim" src="image/LOGO2.svg" alt="LOGO">
+      wrapper.insertAdjacentHTML(
+        "afterbegin",
+        `<img class="logo _anim" src="image/LOGO2.svg" alt="LOGO">
         <div class="user-block _anim">
           <div class="user-photo _anim">
             <img src="${user.photo}" alt="">
@@ -89,7 +86,11 @@ function transformToWorkspace() {
         <div class="dot d1"></div>
         <div class="dot d2"></div>
         <div class="dot d3"></div>
-        </div>`
+        </div>
+        <div class="bottom-bar">
+      <svg class="bottom-bar-button" id="logout-btn" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><path d="M20.484 54H66a6 6 0 0 0 0-12H20.484l7.758-7.758a6 6 0 0 0-8.484-8.484l-18 18a5.998 5.998 0 0 0 0 8.484l18 18a6 6 0 1 0 8.484-8.484Z" class="fill-000000"></path><path d="M90 0H42a5.997 5.997 0 0 0-6 6v12a6 6 0 0 0 12 0v-6h36v72H48v-6a6 6 0 0 0-12 0v12a5.997 5.997 0 0 0 6 6h48a5.997 5.997 0 0 0 6-6V6a5.997 5.997 0 0 0-6-6Z"  class="fill-000000"></path></svg>
+    </div>`
+      )
       let menu_ul = document.createElement("ul")
       menu_ul.classList.add("menu")
       wrapper.querySelector("hr").insertAdjacentElement("afterend", menu_ul)
@@ -103,7 +104,7 @@ function transformToWorkspace() {
         }, 150 * index)
       })
       wrapper.classList.remove("auth-wrapper")
-      
+
       // Подключение скрипта управления меню
       const script = document.createElement("script")
       script.src = "/script/menu-script.js"

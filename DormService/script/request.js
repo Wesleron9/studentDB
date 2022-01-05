@@ -3,7 +3,7 @@ function SendRequest(
   url,
   data = "",
   responseHandler = (response) => {
-    createPopUp("message", `Нет обработчика данных. Ответ сервера: ${response}`)
+    console.log(`Нет обработчика данных. Ответ сервера: ${response}`)
   }
 ) {
   const xhr = new XMLHttpRequest()

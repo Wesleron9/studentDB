@@ -7,6 +7,7 @@ body {
 .auth-wrapper {
   background-color: var(--main-bg-color1);
   width: 100vw;
+  transition: width 1s;
 }
 
 .screen {
@@ -73,8 +74,8 @@ body {
   display: flex;
   align-items: center;
   font-size: 1.8rem;
-  color: var(--auth-btn-back-color);
-  fill: var(--auth-btn-back-color);
+  color: var(--btn-bg-color2);
+  fill: var(--btn-bg-color2);
   opacity: 1;
   transition: opacity 0.7s;
 }
@@ -85,8 +86,8 @@ body {
 }
 
 .button-back:hover {
-  color: var(--auth-btn-back-color-hover);
-  fill: var(--auth-btn-back-color-hover);
+  color: var(--btn-bg-color2-hover);
+  fill: var(--btn-bg-color2-hover);
 }
 
 .button-back svg {

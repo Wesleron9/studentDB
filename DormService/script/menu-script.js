@@ -1,7 +1,22 @@
+function deleteCookie(name) {
+  var domain = location.hostname,
+    path = "/" // root path
+
+  document.cookie = [
+    name,
+    "=",
+    "; expires=" + new Date(0).toUTCString(),
+    "; path=" + path,
+    "; domain=" + domain,
+  ].join("")
+}
+
 class Menu {
   constructor() {
+    this.$sidebar = document.querySelector(".side-menu")
     this.$menuList = document.querySelector(".side-menu .menu")
     this.$mainWindow = document.querySelector(".main")
+    this.$logout_btn = document.querySelector("#logout-btn")
 
     this.MENU // Все доступные пункты меню и подменю
     this.mainMenu // Главное меню
@@ -37,8 +52,29 @@ class Menu {
         this.displaySubmenuFor(module)
       } else {
         this.displayModule(module)
+
+        this.$mainWindow.removeEventListener("click", this.menuItemClickHandler)
       }
     }
+
+    this.$logout_btn.addEventListener("click", () => {
+      SendRequest("POST", "logout.php")
+      deleteCookie("PHPSESSID")
+
+      // Сбор элементов для анимации исчезновения
+      const elementsForFadeOut = document.querySelectorAll(".side-menu > *")
+
+      this.$mainWindow.remove()
+      this.$sidebar.classList.add("auth-wrapper")
+      this.$sidebar.classList.remove("side-menu")
+
+      // Даем элементам анимацию поочередного исчезновения
+      elementsForFadeOut.forEach((el, index) => {
+        setTimeout(() => {
+          el.classList.add("fadeOut")
+        }, 150 * index)
+      })
+    })
   }
 
   // Инициализация меню
@@ -168,7 +204,7 @@ class Menu {
           this.$mainWindow.removeEventListener(
             "click",
             this.menuItemClickHandler
-          ) //!!!!!!!!!!!!!!!!!!!!!!!!!!
+          )
         }
       }
 
@@ -221,9 +257,7 @@ class Menu {
       )
     })
 
-    this.$mainWindow.addEventListener("click", this.menuItemClickHandler, {
-      once: true,
-    })
+    this.$mainWindow.addEventListener("click", this.menuItemClickHandler)
   }
 
   // Вывод модуля

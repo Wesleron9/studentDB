@@ -12,14 +12,14 @@
   /* Кнопки */
   --basic-btn-text-color: #fff;
   --basic-btn-bg-color: #4c5b98;
+  --btn-bg-color2: #eaeaea;
   --basic-btn-bg-color-hover: #5e6ca5;
+  --btn-bg-color2-hover: #4c5b98;
   --basic-btn-bg-color-active: #eaeaea;
   --basic-btn-bg-color-unavailable: #595d6c;
   --basic-btn-text-color-unavailable: #a5a5a5;
   
   /* Авторизация */
-  --auth-btn-back-color: #eaeaea;
-  --auth-btn-back-color-hover: #4c5b98;
 
   /* Сайдбар */
   --current-menu-item-color: #4c5b98;
@@ -27,6 +27,7 @@
   --user-block-bg-color: #353e50;
   --main-menu-hr-color: #b9c5ff;
   --basic-text-color1: #eaeaea;
+  --bottom-bar-bg-color: #353E50;
 
   /* Подменю */
   --submenu-item-color: #545d6d;

@@ -1,6 +1,7 @@
 @import url("/style/colors.css");
 
 .side-menu {
+  position: relative;
   flex-shrink: 0;
   color: var(--basic-text-color1);
   width: 250px;
@@ -96,6 +97,25 @@
   display: block;
   font-size: 1.5rem;
   margin-left: 8px;
+}
+
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  padding: 5px;
+  width: 100%;
+  height: 35px;
+  background-color: var(--bottom-bar-bg-color);
+  overflow: hidden;
+}
+
+.bottom-bar-button {
+  fill: var(--btn-bg-color2);
+}
+
+.bottom-bar-button:hover {
+  fill: var(--btn-bg-color2-hover);
 }
 
 .side-menu ._anim {
