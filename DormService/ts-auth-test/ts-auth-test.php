@@ -2,6 +2,8 @@
 <link rel="stylesheet" href="/style/common-styles.css" />
 
 <?php
+require_once('GoogleAuthenticator.php');
+
 $login = filter_var(
   trim($_POST['login']),
   FILTER_SANITIZE_STRING
