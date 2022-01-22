@@ -6,7 +6,7 @@ include 'response.php';
 //Подключаем функции траслита
 include 'translit.php';
 //Подключаем двухфакторку
-require_once('GoogleAuthenticator.php');
+require_once('ts-auth-test/GoogleAuthenticator.php');
 //Объявляем на какие данные расчитан этот скрипт
 header("Content-Type: application/json");
 
@@ -176,8 +176,9 @@ $password = md5($password . "matveeva");
 
 //Создаём секрет
 $secret=new GoogleAuthenticator;
+$secret = $secret->generateSecret();
 //Вносим данные о регистрации в таблицу не подтвержденных ползователей
-$mysql->query("INSERT INTO `temp-users` (`name`, `login`, `pass`, `tel`, `email`, `secret`) VALUES ('$name', '$login', '$password', '$tel', '$email')");
+$mysql->query("INSERT INTO `temp-users` (`name`, `login`, `pass`, `tel`, `email`, `secret`) VALUES ('$name', '$login', '$password', '$tel', '$email', '$secret')");
 
 //Закрываем соеденение с БД
 $mysql->close();
