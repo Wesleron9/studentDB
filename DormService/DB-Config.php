@@ -1,6 +1,6 @@
 <?php
 //Подключаемся к БД
-$mysql = new mysqli('localehost', 'dorm-service', 'XlPSUbi$O~G#QIDBdpwnNQsH', 'dorm-service');
+$mysql = new mysqli('localhost', 'dorm-service', 'XlPSUbi$O~G#QIDBdpwnNQsH', 'dorm-service');
 
 // Установка кодировки соединения
 $mysql->query("SET NAMES utf8");
