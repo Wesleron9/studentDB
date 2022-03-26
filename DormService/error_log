@@ -1,5 +1,0 @@
-[12-Jan-2022 12:03:04 Europe/Moscow] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/dewal778/public_html/authorization.php on line 59
-[12-Jan-2022 12:03:09 Europe/Moscow] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/dewal778/public_html/authorization.php on line 59
-[12-Jan-2022 12:04:00 Europe/Moscow] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/dewal778/public_html/authorization.php on line 59
-[12-Jan-2022 12:04:02 Europe/Moscow] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/dewal778/public_html/authorization.php on line 59
-[12-Jan-2022 12:04:03 Europe/Moscow] PHP Fatal error:  Call to a member function fetch_assoc() on boolean in /home/dewal778/public_html/authorization.php on line 59

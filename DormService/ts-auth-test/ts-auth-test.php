@@ -3,7 +3,7 @@
 
 <?php
 require_once('GoogleAuthenticator.php');
-require "/DB-Config.php";
+require "../config/DB-Config.php";
 $login = filter_var(
   trim($_POST['login']),
   FILTER_SANITIZE_STRING

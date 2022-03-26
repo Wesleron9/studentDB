@@ -30,7 +30,7 @@ if ($login == "") {
 $passwd = md5($passwd . "matveeva");
 
 //Подключаемся к БД
-require "DB-Config.php";
+require "../../config/DB-Config.php";
 
 //Проверяем есть ли пользователь в таблице временных пользователей
 $result_temp = $mysql->query("SELECT `login`, `pass` FROM `temp-users` WHERE  `login` = '$login' and `pass` = '$passwd'");

@@ -154,7 +154,7 @@ function signIn() {
   // Отправка логина и пароля на сервер
   SendRequest(
     "POST",
-    "authorization.php",
+    "../modules/service-modules/authorization.php",
     {
       login: login,
       password: password,
@@ -312,7 +312,7 @@ function signUp() {
   // Отправка формы регистрации на сервер
   SendRequest(
     "POST",
-    "registration.php",
+    "../modules/service-modules/registration.php",
     {
       name: name,
       email: email,

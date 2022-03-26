@@ -1,12 +1,12 @@
 <?php
 //Подключаемся к БД
-require "DB-Config.php";
+require "../../config/DB-Config.php";
 //Подключаем функции ответа
 include 'response.php';
 //Подключаем функции траслита
 include 'translit.php';
 //Подключаем двухфакторку
-require_once('ts-auth-test/GoogleAuthenticator.php');
+require_once('../../ts-auth-test/GoogleAuthenticator.php');
 //Объявляем на какие данные расчитан этот скрипт
 header("Content-Type: application/json");
 
