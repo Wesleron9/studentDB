@@ -1,6 +1,6 @@
 <?php
 //Подключаемся к БД
-require "../../config/DB-Config.php";
+require "DB-Config.php";
 //Подключаем функции ответа
 include 'response.php';
 //Подключаем функции траслита

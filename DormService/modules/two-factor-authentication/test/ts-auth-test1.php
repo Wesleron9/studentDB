@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../GoogleAuthenticator.php');
-require "../../../config/DB-Config.php";
+require "..//DB-Config.php";
 
 $code = filter_var(
     trim($_POST['code']),

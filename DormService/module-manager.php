@@ -1,7 +1,7 @@
 <?php
 include "response.php"; // Подключаем функции ответа
 
-require "../../config/DB-Config.php"; // Подключаемся к БД
+require "DB-Config.php"; // Подключаемся к БД
 
 header("Content-Type: application/json"); // Объявляем на какие данные расчитан этот скрипт
 

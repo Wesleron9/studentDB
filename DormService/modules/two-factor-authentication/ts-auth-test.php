@@ -4,7 +4,7 @@
 
 <?php
 require_once('../GoogleAuthenticator.php');
-require "../../../config/DB-Config.php";
+require "..//DB-Config.php";
 
 $login = filter_var(
   trim($_POST['login']),

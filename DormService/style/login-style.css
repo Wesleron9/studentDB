@@ -60,13 +60,14 @@ body {
 }
 
 .top-bar {
+  display: flex;
+  transition-duration: 1s;
   position: absolute;
   top: 0;
-  display: flex;
   width: 100vw;
   justify-content: space-between;
-  flex-grow: 0;
   padding: 10px;
+  background-color: rgba(255, 99, 71, 0.397);
 }
 
 .button-back {
