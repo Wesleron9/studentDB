@@ -1,9 +1,11 @@
 <title>two-step auth test</title>
 <link rel="stylesheet" href="/style/common-styles.css" />
 
+
 <?php
-require_once('GoogleAuthenticator.php');
-require "../config/DB-Config.php";
+require_once('../GoogleAuthenticator.php');
+require "../../../config/DB-Config.php";
+
 $login = filter_var(
   trim($_POST['login']),
   FILTER_SANITIZE_STRING
@@ -26,7 +28,14 @@ $secret = filter_var(
 );
 print_r($secret);
 $mysql->close();
-if (count($user) != 0) {
+if (count($user) == 0) {
+    echo '<form method="post">
+    <input type="text" name="login" placeholder="Логин" value="test" />
+    <input type="password" name="password" placeholder="Пароль" value="test123" />
+    <input type="submit" value="Войти" />
+</form>';
+}
+else if (count($user) != 0) {
   echo '<form method="post">
           <input type="text" name="code" placeholder="Код" />
           <input type="submit" value="Ввести код" />
@@ -51,8 +60,3 @@ else {
 ?>
 
 
-<form method="post">
-  <input type="text" name="login" placeholder="Логин" value="test" />
-  <input type="password" name="password" placeholder="Пароль" value="test123" />
-  <input type="submit" value="Войти" />
-</form>

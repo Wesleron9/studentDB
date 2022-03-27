@@ -6,7 +6,7 @@ include 'response.php';
 //Подключаем функции траслита
 include 'translit.php';
 //Подключаем двухфакторку
-require_once('../../ts-auth-test/GoogleAuthenticator.php');
+require_once('../two-factor-authentication/GoogleAuthenticator.php');
 //Объявляем на какие данные расчитан этот скрипт
 header("Content-Type: application/json");
 
